@@ -17,6 +17,7 @@ book:
     - part: "Theory"
       chapters:
         - intro.qmd
+        - piv_basics.ipynb
     - part: "Practice"
       chapters:
         - summary.qmd

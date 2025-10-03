@@ -1,0 +1,63 @@
+project:
+  type: book
+  output-dir: docs
+
+lang: en
+toc: true
+number-sections: true
+bibliography: references.bib
+
+book:
+  title: "Insights of Particle Image Velocimetry"
+  author: "JF Krawczynski"
+  date: "10/3/2025"
+  language: en
+  chapters:
+    - index.qmd
+    - part: "Theory"
+      chapters:
+        - intro.qmd
+    - part: "Practice"
+      chapters:
+        - summary.qmd
+  references: references.qmd
+    
+  downloads: pdf
+  page-footer: |
+    Copyright © 2024-2025 J.-F. Krawczynski, ce travail est placé sous licence [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1). Aucune donnée personnelle n'est collectée. Fait avec [Quarto](https://quarto.org/) et [JupyterLab](https://jupyter.org/).
+  repo-url: https://github.com/jfkrawczynski/su_um5mee12
+  repo-actions: [issue]
+  image: figs/balls_water.webp
+  favicon: favicon.svg
+
+format:
+  html:
+    theme: cosmo
+    code-fold: true
+    code-tools: true
+    code-annotations: hover
+    echo: true
+    fig-align: center
+    fig-cap-location: margin
+    link-external-icon: true
+    link-external-newwindow: true
+    citations-hover: true
+    footnotes-hover: true
+    highlight-style: github
+    number-depth: 2
+    default-image-extension: webp
+    embed-resources: false
+
+  pdf:
+    classoption: [DIV=13]
+    default-image-extension: pdf
+    fig-format: pdf
+    pdf-engine: xelatex
+    pdf-engine-opt: '-shell-escape'
+    keep-tex: True
+    include-in-header:
+      text: |
+        \usepackage{grffile}
+
+execute:
+  freeze: auto

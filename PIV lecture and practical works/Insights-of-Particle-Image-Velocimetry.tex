@@ -1,0 +1,436 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  english,
+  letterpaper,
+  numbers=noendperiod,
+  DIV=13]{scrreprt}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage[english]{selnolig} % disable illegal ligatures
+\fi
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\usepackage{grffile}
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Insights of Particle Image Velocimetry},
+  pdfauthor={JF Krawczynski},
+  pdflang={en},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Insights of Particle Image Velocimetry}
+\author{JF Krawczynski}
+\date{2025-10-03}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\bookmarksetup{startatroot}
+
+\chapter*{About}\label{about}
+\addcontentsline{toc}{chapter}{About}
+
+\markboth{About}{About}
+
+This site hosts the course materials for fluid mechanics measurements by
+PIV for the course unit \textbf{UM5MEE12 - Experimental Methods and Data
+Processing} taught in the
+\href{https://masters-sdi.sorbonne-universite.fr/la-mention-mecanique}{Master
+of Engineering Sciences} at the
+\href{https://sciences.sorbonne-universite.fr/faculte/ufr-instituts-observatoires-ecoles/ufr-dingenierie}{Faculty
+of Engineering} of \href{https://www.sorbonne-universite.fr/}{Sorbonne
+University}. The aim is to understand the basic concepts inherent to
+measuring velocity fields in fluid flows.
+
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, leftrule=.75mm, opacityback=0, bottomrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, breakable, colback=white, opacitybacktitle=0.6, toptitle=1mm, rightrule=.15mm, left=2mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}]
+
+This course is partly adapted from the
+\href{https://github.com/OpenPIV/openpiv-python}{documentation} of
+\href{https://doi.org/10.5281/zenodo.4409178}{OpenPIV}, licensed under
+the GNU General Public License v2.0.
+
+\end{tcolorbox}
+
+The course content is divided into two parts:
+
+\begin{itemize}
+\tightlist
+\item
+  The theoretical aspects of the course, including:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    the fundamental physical considerations related to the tracer
+    particles used to measure the flow
+  \item
+    the algorithms developed to obtain the velocity vector field from
+    the analysis of particle images
+  \end{itemize}
+\item
+  The practical aspects:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    a numerical part to better understand the evaluation methods using
+    PIV. The images processed will be generated synthetically
+  \item
+    an experimental part to understand the trade-offs required to obtain
+    high-quality images for processing
+  \end{itemize}
+\end{itemize}
+
+In this course, we will mainly use the following tools, with which
+students should be familiar: - \href{https://www.python.org/}{Python} -
+\href{https://numpy.org}{Numpy} -
+\href{https://matplotlib.org}{Matplotlib}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Assessment}\label{assessment}
+\addcontentsline{toc}{chapter}{Assessment}
+
+\markboth{Assessment}{Assessment}
+
+Assessment will be based on a short lab report (for the numerical part)
+and a project report focusing on the analysis of experimental data
+obtained during the lab sessions.
+
+\bookmarksetup{startatroot}
+
+\chapter*{Schedule}\label{schedule}
+\addcontentsline{toc}{chapter}{Schedule}
+
+\markboth{Schedule}{Schedule}
+
+Here is the planned organization of the sessions:
+
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3125}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3125}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3750}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+Week
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Date
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Topic
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 09/24/2025 & Introduction to velocity field measurement by PIV,
+Lecture 1 \\
+2 & 10/01/2025 & Algorithms and experimental specifics, Lab 1 + Lab 2 \\
+3 & 10/08/2025 & Algorithms and experimental specifics, Lab 1 + Lab 2 \\
+\end{longtable}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Recommended Readings and
+Media}\label{recommended-readings-and-media}
+\addcontentsline{toc}{chapter}{Recommended Readings and Media}
+
+\markboth{Recommended Readings and Media}{Recommended Readings and
+Media}
+
+Below is a list of useful resources for your project, organized by
+topic.
+
+\subsubsection*{Python for Scientific
+Programming}\label{python-for-scientific-programming}
+\addcontentsline{toc}{subsubsection}{Python for Scientific Programming}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://zestedesavoir.com/tutoriels/2514/un-zeste-de-python/}{Un
+  Zeste de Python}
+\item
+  \href{https://zestedesavoir.com/tutoriels/4139/les-bases-de-numpy-et-matplotlib/}{Les
+  bases de numpy et matplotlib}
+\item
+  \href{https://www.labri.fr/perso/nrougier/from-python-to-numpy/}{From
+  Python to Numpy}
+\item
+  \href{https://inria.hal.science/hal-03427242v1/file/scientific-visualization-python-matplotlib.pdf}{Scientific
+  Visualization: Python + Matplotlib} (N. P. Rougier 2021)
+\end{itemize}
+
+\subsubsection*{Scientific outputs: figures and
+reports}\label{scientific-outputs-figures-and-reports}
+\addcontentsline{toc}{subsubsection}{Scientific outputs: figures and
+reports}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1003833&type=printable}{Ten
+  Simple Rules for Better Figures} (M. D. Rougier Nicolas P. 2014)
+\item
+  \href{https://fr.wikibooks.org/wiki/LaTeX}{Wikibook LaTeX}
+\item
+  \href{https://typst.app/}{Typst}
+\end{itemize}
+
+\part{Theory}
+
+\chapter{Introduction}\label{introduction}
+
+This is a book created from markdown and executable code.
+
+See Knuth (1984) for additional discussion of literate programming.
+
+\part{Practice}
+
+\chapter{Summary}\label{summary}
+
+In summary, this book has no content whatsoever.
+
+\bookmarksetup{startatroot}
+
+\chapter*{References}\label{references}
+\addcontentsline{toc}{chapter}{References}
+
+\markboth{References}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-knuth84}
+Knuth, Donald E. 1984. {``Literate Programming.''} \emph{Comput. J.} 27
+(2): 97--111. \url{https://doi.org/10.1093/comjnl/27.2.97}.
+
+\bibitem[\citeproctext]{ref-rougierTenSimpleRules2014}
+Rougier, Michael Droettboom, Nicolas P. 2014. {``Ten Simple Rules for
+Better Figures.''} \emph{PLOS Computational Biology} 10 (9).
+\url{https://doi.org/10.1371/journal.pcbi.1003833}.
+
+\bibitem[\citeproctext]{ref-rougierScientificVisualizationPython2021}
+Rougier, Nicolas P. 2021. \emph{Scientific Visualization: Python +
+Matplotlib}. CRC Press.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}

@@ -16,11 +16,12 @@ book:
     - index.qmd
     - part: "Theory"
       chapters:
-        - intro.qmd
         - piv_basics.ipynb
+        - tutorial.ipynb
+        - advanced.ipynb
     - part: "Practice"
       chapters:
-        - summary.qmd
+        - practice.ipynb
   references: references.qmd
     
   downloads: pdf
@@ -34,7 +35,7 @@ book:
 format:
   html:
     theme: cosmo
-    code-fold: true
+    code-fold: false
     code-tools: true
     code-annotations: hover
     echo: true

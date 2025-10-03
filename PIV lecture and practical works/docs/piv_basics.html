@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Basics of PIV – Insights of Particle Image Velocimetry</title>
+<title>1&nbsp; Basics of PIV – Insights of Particle Image Velocimetry</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./tutorial.html" rel="next">
+<link href="./index.html" rel="prev">
 <link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -148,7 +148,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Theory</a></li><li class="breadcrumb-item"><a href="./piv_basics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of PIV</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./piv_basics.html">Theory</a></li><li class="breadcrumb-item"><a href="./piv_basics.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of PIV</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -196,14 +196,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="./piv_basics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of PIV</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./piv_basics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of PIV</span></span></a>
+  <a href="./tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">OpenPIV first tutorial</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Advanced PIV techniques</span></span></a>
   </div>
 </li>
       </ul>
@@ -219,8 +225,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  <a href="./practice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurements</span></span></a>
   </div>
 </li>
       </ul>
@@ -241,17 +247,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-particle-image-velocimetry-piv-about" id="toc-what-is-particle-image-velocimetry-piv-about" class="nav-link active" data-scroll-target="#what-is-particle-image-velocimetry-piv-about"><span class="header-section-number">2.1</span> What is Particle Image Velocimetry (PIV) about?</a></li>
-  <li><a href="#how-to-estimate-a-velocity-field-from-a-couple-of-grayscale-particle-images" id="toc-how-to-estimate-a-velocity-field-from-a-couple-of-grayscale-particle-images" class="nav-link" data-scroll-target="#how-to-estimate-a-velocity-field-from-a-couple-of-grayscale-particle-images"><span class="header-section-number">2.2</span> How to estimate a velocity-field from a couple of grayscale particle images?</a></li>
+  <li><a href="#what-is-particle-image-velocimetry-piv-about" id="toc-what-is-particle-image-velocimetry-piv-about" class="nav-link active" data-scroll-target="#what-is-particle-image-velocimetry-piv-about"><span class="header-section-number">1.1</span> What is Particle Image Velocimetry (PIV) about?</a></li>
+  <li><a href="#how-to-estimate-a-velocity-field-from-a-couple-of-grayscale-particle-images" id="toc-how-to-estimate-a-velocity-field-from-a-couple-of-grayscale-particle-images" class="nav-link" data-scroll-target="#how-to-estimate-a-velocity-field-from-a-couple-of-grayscale-particle-images"><span class="header-section-number">1.2</span> How to estimate a velocity-field from a couple of grayscale particle images?</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jfkrawczynski/su_um5mee12/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Theory</a></li><li class="breadcrumb-item"><a href="./piv_basics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of PIV</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./piv_basics.html">Theory</a></li><li class="breadcrumb-item"><a href="./piv_basics.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of PIV</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of PIV</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of PIV</span></h1>
 </div>
 
 
@@ -270,8 +276,8 @@ window.Quarto = {
 
 <p>Using simple mathematical knowledge and existing algorithms written with Python, Numpy, Scipy, we will introduce the basics of PIV.</p>
 <p>All the images used can be found in the <a href="https://github.com/jfkrawczynski/um5mee12_jfk/tree/main/images">/images</a> directory of th</p>
-<section id="what-is-particle-image-velocimetry-piv-about" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="what-is-particle-image-velocimetry-piv-about"><span class="header-section-number">2.1</span> What is Particle Image Velocimetry (PIV) about?</h2>
+<section id="what-is-particle-image-velocimetry-piv-about" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-particle-image-velocimetry-piv-about"><span class="header-section-number">1.1</span> What is Particle Image Velocimetry (PIV) about?</h2>
 <p>“Particle” Image Velocimetry (PIV) is a non-intrusive state-of-the-art technique<a href="#fn1"><sup>1,</sup></a><a href="#fn2"><sup>2</sup></a> to get the velocity field of the flow being studied from images of small particles, called tracers.</p>
 <p>It is based on image recording of the illuminated flow field using seeding particles (called tracers) which, when sufficiently small compared to the smallest characteristic length scales of the flow, are assumed to faithfully follow the flow dynamics (the degree to which the particles faithfully follow the flow is represented by the Stokes number). In practice, common sizes of the tracer particles are in the order of 5-100 microns. The entrained particles are generally made visible in a cross-section of the flow being studied by forming a coherent light sheet. In practice, the flow is illuminated twice using a laser light sheet, forming a plane where a camera is focused. The time delay between the pulses depends on the mean velocity and the image magnification. It is assumed that the tracer particles follow the local flow velocity between the two consecutive illuminations. The light scattered from the tracer particles is then imaged via an optical lens on a digital camera. The displacement of the particle images between two consecutive light pulses (respectively, frames) is determined through evaluation of the spatial cross-correlation function and image processing tools as implemented in OpenPIV.</p>
 <p>The effectiveness of the measurement results strongly depends on a large number of parameters such as particles concentration, size distribution and shape, illumination source, recording device, and synchronization between the illumination, acquisition and recording systems (Huang et al., 1997). An appropriate choice of the different parameters of the cross correlation analysis (e.g., interrogation area, time between pulses, scaling) will influence the results accuracy.</p>
@@ -280,8 +286,8 @@ window.Quarto = {
 <p><sup id="fn1">1</sup> Raffel et al., 2007<br>
 <sup id="fn2">2</sup> Adrian, 1991</p>
 </section>
-<section id="how-to-estimate-a-velocity-field-from-a-couple-of-grayscale-particle-images" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="how-to-estimate-a-velocity-field-from-a-couple-of-grayscale-particle-images"><span class="header-section-number">2.2</span> How to estimate a velocity-field from a couple of grayscale particle images?</h2>
+<section id="how-to-estimate-a-velocity-field-from-a-couple-of-grayscale-particle-images" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="how-to-estimate-a-velocity-field-from-a-couple-of-grayscale-particle-images"><span class="header-section-number">1.2</span> How to estimate a velocity-field from a couple of grayscale particle images?</h2>
 <p>This tutorial will follow the simplest analysis path from the two images to the velocity field and some post-analysis.</p>
 <div id="cell-3" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the standard numerical and plotting packages</span></span>
@@ -1160,13 +1166,13 @@ max velocity that can be detected with these window sizes: [16 16]</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="About">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">About</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tutorial.html" class="pagination-link" aria-label="OpenPIV first tutorial">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">OpenPIV first tutorial</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References – Insights of Particle Image Velocimetry</title>
+<title>2&nbsp; OpenPIV first tutorial – Insights of Particle Image Velocimetry</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,26 +55,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -84,7 +65,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./practice.html" rel="prev">
+<link href="./advanced.html" rel="next">
+<link href="./piv_basics.html" rel="prev">
 <link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -137,7 +119,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./piv_basics.html">Theory</a></li><li class="breadcrumb-item"><a href="./tutorial.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">OpenPIV first tutorial</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -191,7 +173,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial.html" class="sidebar-item-text sidebar-link">
+  <a href="./tutorial.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">OpenPIV first tutorial</span></span></a>
   </div>
 </li>
@@ -222,7 +204,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -231,15 +213,27 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#processing" id="toc-processing" class="nav-link active" data-scroll-target="#processing"><span class="header-section-number">2.1</span> Processing</a></li>
+  <li><a href="#post-processing" id="toc-post-processing" class="nav-link" data-scroll-target="#post-processing"><span class="header-section-number">2.2</span> Post-processing</a></li>
+  <li><a href="#plot-and-save-the-results" id="toc-plot-and-save-the-results" class="nav-link" data-scroll-target="#plot-and-save-the-results"><span class="header-section-number">2.3</span> Plot and save the results</a></li>
+  <li><a href="#another-example" id="toc-another-example" class="nav-link" data-scroll-target="#another-example"><span class="header-section-number">3</span> Another example</a>
+  <ul class="collapse">
+  <li><a href="#use-any-pair-of-images-that-you-can-access-via-url" id="toc-use-any-pair-of-images-that-you-can-access-via-url" class="nav-link" data-scroll-target="#use-any-pair-of-images-that-you-can-access-via-url"><span class="header-section-number">3.1</span> Use any pair of images that you can access via URL</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/jfkrawczynski/su_um5mee12/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./piv_basics.html">Theory</a></li><li class="breadcrumb-item"><a href="./tutorial.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">OpenPIV first tutorial</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">References</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">OpenPIV first tutorial</span></h1>
 </div>
 
 
@@ -256,35 +250,192 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-adrian1991particleimaging" class="csl-entry" role="listitem">
-Adrian, R. J. 1991. <span>“Particle-Imaging Techniques for Experimental
-Fluid Mechanics.”</span> <em>Annual Review of Fluid Mechanics</em> 23
-(1): 261–304. <a href="https://doi.org/10.1146/annurev.fl.23.010191.000245">https://doi.org/10.1146/annurev.fl.23.010191.000245</a>.
+<p>Using open source software, OpenPIV (http://www.openpiv.net), written with Python, Numpy, Scipy (http://www.scipy.org), we will introduce the basics of PIV.</p>
+<p>This tutorial will follow the simplest analysis path from the two images to the velocity field and some post-analysis.</p>
+<div id="cell-2" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the standard numerical and plotting packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># import what is necessary from OpenPIV</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openpiv <span class="im">import</span> tools, pyprocess, validation, filters, scaling</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ref-huang1997errors" class="csl-entry" role="listitem">
-Huang, Dabiri, H. 1997. <span>“On Errors of Digital Particle Image
-Velocimetry.”</span> <em>Measurement Science and Technology</em> 8 (12):
-1427–39. <a href="https://doi.org/10.1088/0957-0233/8/12/1427">https://doi.org/10.1088/0957-0233/8/12/1427</a>.
+<div id="cell-3" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read a pair of PIV images</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>frame_a  <span class="op">=</span> tools.imread( <span class="st">'./images/exp1_001_b.bmp'</span> )</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>frame_b  <span class="op">=</span> tools.imread( <span class="st">'./images/exp1_001_c.bmp'</span> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ref-raffelParticleImageVelocimetry2007" class="csl-entry" role="listitem">
-Raffel, Willert, M. 2007. <em>Particle Image Velocimetry: A Practical
-Guide</em>. springer.
+<div id="cell-4" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's visualize them using matplotlib</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">8</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(frame_a,cmap<span class="op">=</span>plt.cm.gray)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(frame_b,cmap<span class="op">=</span>plt.cm.gray)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tutorial_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<div id="ref-rougierTenSimpleRules2014" class="csl-entry" role="listitem">
-Rougier, Michael Droettboom, Nicolas P. 2014. <span>“Ten Simple Rules
-for Better Figures.”</span> <em>PLOS Computational Biology</em> 10 (9).
-<a href="https://doi.org/10.1371/journal.pcbi.1003833">https://doi.org/10.1371/journal.pcbi.1003833</a>.
 </div>
-<div id="ref-rougierScientificVisualizationPython2021" class="csl-entry" role="listitem">
-Rougier, Nicolas P. 2021. <em>Scientific Visualization: Python +
-Matplotlib</em>. CRC Press.
+</div>
+<section id="processing" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="processing"><span class="header-section-number">2.1</span> Processing</h2>
+<p>We are going to use the <code>extended_search_area_piv function</code>, wich is a standard PIV cross-correlation algorithm.</p>
+<p>This function allows the search area (<code>search_area_size</code>) in the second frame to be larger than the interrogation window in the first frame (<code>window_size</code>). Also, the search areas can overlap (<code>overlap</code>).</p>
+<p>The <code>extended_search_area_piv</code> function will return three arrays: 1. The <code>u</code> component of the velocity field 2. The <code>v</code> component of the velocity field 3. The signal-to-noise ratio (<code>sig2noise</code>) of the cross-correlation map of each vector. The higher the signal-to-noise ratio, the higher the probability that its magnitude and direction are correct.</p>
+<div id="cell-6" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the PIV analysis parameters</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>winsize <span class="op">=</span> <span class="dv">24</span> <span class="co"># size of the interrogation window in frame A, in pixels</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>searchsize <span class="op">=</span> <span class="dv">32</span>  <span class="co"># size of the window in frame B (searchsize is larger or equal to winsize), in pixels</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>overlap <span class="op">=</span> <span class="dv">12</span> <span class="co"># overlap between the neighbouring windows, in pixels</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> <span class="fl">0.02</span> <span class="co"># time interval of the PIV recording, in sec</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>u, v, sig2noise <span class="op">=</span> pyprocess.extended_search_area_piv(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    frame_a.astype(np.int32),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    frame_b.astype(np.int32),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    window_size<span class="op">=</span>winsize,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    overlap<span class="op">=</span>overlap,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    dt<span class="op">=</span>dt,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    search_area_size<span class="op">=</span>searchsize,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    sig2noise_method<span class="op">=</span><span class="st">'peak2peak'</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The function <code>get_coordinates</code> finds the center of each interrogation window. This will be useful later on when plotting the vector field.</p>
+<div id="cell-9" class="cell" data-scrolled="true" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get a list of coordinates for the vector field</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> pyprocess.get_coordinates(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    image_size<span class="op">=</span>frame_a.shape,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    search_area_size<span class="op">=</span>searchsize,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    overlap<span class="op">=</span>overlap,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="post-processing" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="post-processing"><span class="header-section-number">2.2</span> Post-processing</h2>
+<p>Strictly speaking, we are ready to plot the vector field. However, some spurious vectors might locally impact the quality of the results. It might therefore be useful to apply some filtering.</p>
+<p>To start, let’s use the function <code>sig2noise_val</code> to get a mask indicating which vectors have a minimum amount of signal-to-noise ratio. Vectors below a certain threshold are substituted by <code>NaN</code>. If you are not sure about which threshold value to use, try taking a look at the signal-to-noise ratio histogram with: <code>plt.hist(sig2noise.flatten())</code>.</p>
+<div id="cell-11" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clean the peaks that are below a quality threshold</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>invalid_mask <span class="op">=</span> validation.sig2noise_val(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    sig2noise,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    threshold <span class="op">=</span> <span class="fl">1.3</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Another useful function is <code>replace_outliers</code>, which will find outlier vectors and substitute them with an average of neighboring vectors. The larger the <code>kernel_size</code>, the larger the considered neighborhood. This function uses an iterative image inpainting algorithm. The number of iterations can be chosen via <code>max_iter</code>.</p>
+<div id="cell-13" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace those that are masked as bad vectors with local interpolation</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>u, v <span class="op">=</span> filters.replace_outliers(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    u, v,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    invalid_mask,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">'localmean'</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    max_iter<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    kernel_size<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Next, we are going to convert pixels to millimeters.</p>
+<div id="cell-15" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scale the results from pix/dt to mm/sec</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x, y, u, v <span class="op">=</span> scaling.uniform(x, y, u, v, scaling_factor <span class="op">=</span> <span class="fl">96.52</span> ) <span class="co"># 96.52 pixels/millimeter</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="plot-and-save-the-results" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="plot-and-save-the-results"><span class="header-section-number">2.3</span> Plot and save the results</h2>
+<p>The vector field can be plotted with <code>display_vector_field</code>. Vectors with signal-to-noise ratio below the threshold are displayed in red.</p>
+<div id="cell-17" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pathlib</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">4</span>))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>tools.display_vector_field(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    pathlib.Path(<span class="st">'exp1_001.txt'</span>),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    ax<span class="op">=</span>ax, scaling_factor<span class="op">=</span><span class="fl">96.52</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    scale<span class="op">=</span><span class="dv">50</span>, <span class="co"># scale defines here the arrow length</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="fl">0.0035</span>, <span class="co"># width is the thickness of the arrow</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    on_img<span class="op">=</span><span class="va">True</span>, <span class="co"># overlay on the image</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    image_name<span class="op">=</span> <span class="bu">str</span>(<span class="st">'./images/exp1_001_b.bmp'</span>),</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tutorial_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The function <code>save</code> is used to save the vector field to a ASCII tabular file.</p>
+<div id="cell-19" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tools.save(<span class="st">'exp1_001.txt'</span> , x, y, u, v, invalid_mask)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="another-example" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Another example</h1>
+<section id="use-any-pair-of-images-that-you-can-access-via-url" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="use-any-pair-of-images-that-you-can-access-via-url"><span class="header-section-number">3.1</span> Use any pair of images that you can access via URL</h2>
+<p>For instance we can use images from PIV Challenge http://www.pivchallenge.org/</p>
+<div id="cell-21" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>frame_a <span class="op">=</span> tools.imread(<span class="st">'http://www.pivchallenge.org/pub/B/B001_1.tif'</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>frame_b <span class="op">=</span> tools.imread(<span class="st">'http://www.pivchallenge.org/pub/B/B001_2.tif'</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#frame_a = tools.imread("./images/B005_1.tif")</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#frame_b = tools.imread("./images/B005_2.tif")</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">8</span>))</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(frame_a,cmap<span class="op">=</span>plt.cm.gray)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(frame_b,cmap<span class="op">=</span>plt.cm.gray)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tutorial_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-22" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>winsize <span class="op">=</span> <span class="dv">32</span> <span class="co"># pixels</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>searchsize <span class="op">=</span> <span class="dv">64</span>  <span class="co"># pixels, search in image B</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>overlap <span class="op">=</span> <span class="dv">16</span> <span class="co"># pixels</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> <span class="fl">1.0</span> <span class="co"># sec</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>u, v, sig2noise <span class="op">=</span> pyprocess.extended_search_area_piv( frame_a.astype(np.int32), frame_b.astype(np.int32), window_size<span class="op">=</span>winsize, overlap<span class="op">=</span>overlap, dt<span class="op">=</span>dt, search_area_size<span class="op">=</span>searchsize, sig2noise_method<span class="op">=</span><span class="st">'peak2peak'</span> )</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#x, y = pyprocess.get_coordinates( image_size=frame_a.shape, window_size=winsize, overlap=overlap )</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> pyprocess.get_coordinates(</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    image_size<span class="op">=</span>frame_a.shape,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    search_area_size<span class="op">=</span>searchsize,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    overlap<span class="op">=</span>overlap,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#u, v, mask = validation.sig2noise_val( u0, v0, sig2noise, threshold = 1.1 )</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#u, v = filters.replace_outliers( u, v, method='localmean', max_iter=10, kernel_size=2)</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Post-processing</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>invalid_mask <span class="op">=</span> validation.sig2noise_val(</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    sig2noise,</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    threshold <span class="op">=</span> <span class="fl">1.1</span>,</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>u, v <span class="op">=</span> filters.replace_outliers(</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    u, v,</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    invalid_mask,</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">'localmean'</span>,</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    max_iter<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    kernel_size<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co"># x, y, u, v = scaling.uniform(x, y, u, v, scaling_factor = 96.52 )</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">4</span>))</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>plt.quiver(x,y,u,v,color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>plt.quiver(x[invalid_mask],y[invalid_mask],u[invalid_mask],v[invalid_mask],color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tutorial_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
 
-<!-- -->
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -786,18 +937,16 @@ Matplotlib</em>. CRC Press.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./practice.html" class="pagination-link" aria-label="Measurements">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurements</span></span>
+      <a href="./piv_basics.html" class="pagination-link" aria-label="Basics of PIV">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of PIV</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./advanced.html" class="pagination-link" aria-label="Advanced PIV techniques">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Advanced PIV techniques</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
-</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># References {.unnumbered}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>::: {#refs}</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
-</div></div></div></div></div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -806,7 +955,7 @@ Matplotlib</em>. CRC Press.
     </div>   
     <div class="nav-footer-center">
 <p>Copyright © 2024-2025 J.-F. Krawczynski, ce travail est placé sous licence <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1">CC BY-SA 4.0</a>. Aucune donnée personnelle n’est collectée. Fait avec <a href="https://quarto.org/">Quarto</a> et <a href="https://jupyter.org/">JupyterLab</a>.</p>
-<div class="toc-actions"><ul><li><a href="https://github.com/jfkrawczynski/su_um5mee12/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jfkrawczynski/su_um5mee12/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

@@ -1,5 +1,60 @@
-# Preface {.unnumbered}
+---
+number-sections: false
+---
 
-This is a Quarto book.
+# About {.unnumbered}
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+This site hosts the course materials for fluid mechanics measurements by PIV for the course unit **UM5MEE12 - Experimental Methods and Data Processing** taught in the [Master of Engineering Sciences](https://masters-sdi.sorbonne-universite.fr/la-mention-mecanique) at the [Faculty of Engineering](https://sciences.sorbonne-universite.fr/faculte/ufr-instituts-observatoires-ecoles/ufr-dingenierie) of [Sorbonne University](https://www.sorbonne-universite.fr/). The aim is to understand the basic concepts inherent to measuring velocity fields in fluid flows.
+
+:::{.callout-note}
+This course is partly adapted from the [documentation](https://github.com/OpenPIV/openpiv-python) of [OpenPIV](https://doi.org/10.5281/zenodo.4409178), licensed under the GNU General Public License v2.0.
+:::
+
+The course content is divided into two parts:
+
+- The theoretical aspects of the course, including:
+  - the fundamental physical considerations related to the tracer particles used to measure the flow
+  - the algorithms developed to obtain the velocity vector field from the analysis of particle images
+- The practical aspects:
+  - a numerical part to better understand the evaluation methods using PIV. The images processed will be generated synthetically
+  - an experimental part to understand the trade-offs required to obtain high-quality images for processing
+
+In this course, we will mainly use the following tools, with which students should be familiar:
+
+- [Python](https://www.python.org/)
+- [Numpy](https://numpy.org)
+- [Matplotlib](https://matplotlib.org)
+
+
+# Assessment
+
+Assessment will be based on a short lab report (for the numerical part) and a project report focusing on the analysis of experimental data obtained during the lab sessions.
+
+# Schedule
+
+Here is the planned organization of the sessions:
+
+| Week | Date | Topic |
+| ----: | :---: | :----- |
+| 1 | 09/24/2025 | Introduction to velocity field measurement by PIV, Lecture 1 |
+| 2 | 10/01/2025 | Algorithms and experimental specifics, Lab 1 + Lab 2 |
+| 3 | 10/08/2025 | Algorithms and experimental specifics, Lab 1 + Lab 2 |
+
+
+# Recommended Readings and Media
+
+Below is a list of useful resources for your project, organized by topic.
+
+#### Python for Scientific Programming
+
+- [Un Zeste de Python](https://zestedesavoir.com/tutoriels/2514/un-zeste-de-python/)
+- [Les bases de numpy et matplotlib](https://zestedesavoir.com/tutoriels/4139/les-bases-de-numpy-et-matplotlib/)
+- [From Python to Numpy](https://www.labri.fr/perso/nrougier/from-python-to-numpy/)
+- [Scientific Visualization: Python + Matplotlib](https://inria.hal.science/hal-03427242v1/file/scientific-visualization-python-matplotlib.pdf) [@rougierScientificVisualizationPython2021]
+
+
+#### Scientific outputs: figures and reports
+
+- [Ten Simple Rules for Better Figures](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1003833&type=printable) [@rougierTenSimpleRules2014]
+- [Wikibook LaTeX](https://fr.wikibooks.org/wiki/LaTeX)
+- [Typst](https://typst.app/)

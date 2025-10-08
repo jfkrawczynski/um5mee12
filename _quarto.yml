@@ -27,7 +27,7 @@ book:
   downloads: pdf
   page-footer: |
     Copyright © 2024-2025 J.-F. Krawczynski, ce travail est placé sous licence [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1). Aucune donnée personnelle n'est collectée. Fait avec [Quarto](https://quarto.org/) et [JupyterLab](https://jupyter.org/).
-  repo-url: https://github.com/jfkrawczynski/su_um5mee12
+  repo-url: https://github.com/jfkrawczynski/um5mee12
   repo-actions: [issue]
   image: figs/balls_water.webp
   favicon: favicon.svg

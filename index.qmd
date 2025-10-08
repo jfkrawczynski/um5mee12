@@ -25,6 +25,9 @@ In this course, we will mainly use the following tools, with which students shou
 - [Numpy](https://numpy.org)
 - [Matplotlib](https://matplotlib.org)
 
+:::{.callout-tip}
+A [PDF version](/Insights-of-Particle-Image-Velocimetry.pdf) of this website is available for offline viewing (please avoid printing!).
+:::
 
 # Assessment
 
@@ -34,8 +37,8 @@ Assessment will be based on a short lab report (for the numerical part) and a pr
 
 Here is the planned organization of the sessions:
 
-| Week | Date | Topic |
-| ----: | :---: | :----- |
+| # | Date | Topic |
+| -: | :---: | :-------- |
 | 1 | 09/24/2025 | Introduction to velocity field measurement by PIV, Lecture 1 |
 | 2 | 10/01/2025 | Algorithms and experimental specifics, Lab 1 + Lab 2 |
 | 3 | 10/08/2025 | Algorithms and experimental specifics, Lab 1 + Lab 2 |

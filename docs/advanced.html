@@ -474,13 +474,8 @@ B005_3 B005_4</code></pre>
 </section>
 <section id="assignement" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="assignement"><span class="header-section-number">3.7</span> Assignement</h2>
-<p>Now that your are familiar with the advanced PIV techniques, you will be asked to analyze some databases of a particular flow: a Lamb-Oseen vortex flow which is often used for validation due to its well-known analytical solutions. <a href="https://github.com/jfkrawczynski/um5mee12_jfk/tree/main/images/vortex">Synthetic images</a> are provided for different particle densities, referred as PPP (Particle Per Pixel).</p>
-<p>A <code>parameters.mat</code> is also provided. It provides the particle individual locations for each time step (30) in the x and y directions. This file is in a Matlab format but you can access its content as:</p>
-<div id="790228f8-6ade-4073-93df-ee1065725cea" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.io</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mat <span class="op">=</span> scipy.io.loadmat(<span class="st">'parameters.mat'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Give an evaluation of the velocity vector fields for every test case. Give some insights about the PIV parameters used for the analyses. Evaluate the precision of your estimates with regards to the exact location of the particles as given in <code>parameters.mat</code>.</p>
+<p>Now that your are familiar with the advanced PIV techniques, you will be asked to analyze some databases of a particular flow: a Lamb-Oseen vortex flow which is often used for validation due to its well-known analytical solutions. You will generate series of images of this vortex flow with different particle densities and/or different particles diameters and analyze them using the advanced PIV techniques covered in this tutorial. A <a href="https://github.com/jfkrawczynski/piv_image_gen/tree/main">package</a> of Python scripts is provided to help you with the generation.</p>
+<p>Give an evaluation of the velocity vector fields for every generated test case. Give some insights about the PIV parameters used for the analyses. Evaluate the precision of your estimates with regards to the exact location of the particles as given in <code>parameters.h5</code>.</p>
 
 
 </section>

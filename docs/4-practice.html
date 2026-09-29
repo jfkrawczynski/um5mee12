@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./references.html" rel="next">
-<link href="./advanced.html" rel="prev">
+<link href="./3-advanced.html" rel="prev">
 <link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -107,6 +107,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -119,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./practice.html">Practice</a></li><li class="breadcrumb-item"><a href="./practice.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurements</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./4-practice.html">Practice</a></li><li class="breadcrumb-item"><a href="./4-practice.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurements</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,19 +196,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./piv_basics.html" class="sidebar-item-text sidebar-link">
+  <a href="./1-piv_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of PIV</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">OpenPIV first tutorial</span></span></a>
+  <a href="./2-openpiv_tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">OpenPIV tutorial</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced.html" class="sidebar-item-text sidebar-link">
+  <a href="./3-advanced.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Advanced PIV techniques</span></span></a>
   </div>
 </li>
@@ -196,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./practice.html" class="sidebar-item-text sidebar-link active">
+  <a href="./4-practice.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurements</span></span></a>
   </div>
 </li>
@@ -218,17 +247,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#image-recording" id="toc-image-recording" class="nav-link active" data-scroll-target="#image-recording"><span class="header-section-number">4.1</span> Image recording</a></li>
-  <li><a href="#seeding-particles" id="toc-seeding-particles" class="nav-link" data-scroll-target="#seeding-particles"><span class="header-section-number">4.2</span> Seeding particles</a></li>
-  <li><a href="#light-source" id="toc-light-source" class="nav-link" data-scroll-target="#light-source"><span class="header-section-number">4.3</span> Light source</a></li>
-  <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment"><span class="header-section-number">4.4</span> Assignment</a></li>
+  <li><a href="#seeding-particles" id="toc-seeding-particles" class="nav-link active" data-scroll-target="#seeding-particles"><span class="header-section-number">4.1</span> Seeding particles</a></li>
+  <li><a href="#light-source" id="toc-light-source" class="nav-link" data-scroll-target="#light-source"><span class="header-section-number">4.2</span> Light source</a></li>
+  <li><a href="#image-recording" id="toc-image-recording" class="nav-link" data-scroll-target="#image-recording"><span class="header-section-number">4.3</span> Image recording</a></li>
+  <li><a href="#acquisition-protocol" id="toc-acquisition-protocol" class="nav-link" data-scroll-target="#acquisition-protocol"><span class="header-section-number">4.4</span> Acquisition protocol</a>
+  <ul class="collapse">
+  <li><a href="#before-your-slot-target-realizations-per-series" id="toc-before-your-slot-target-realizations-per-series" class="nav-link" data-scroll-target="#before-your-slot-target-realizations-per-series">Before your slot: target realizations per series</a></li>
+  <li><a href="#one-time-setup" id="toc-one-time-setup" class="nav-link" data-scroll-target="#one-time-setup">One-time setup</a></li>
+  <li><a href="#per-case-flow-regime" id="toc-per-case-flow-regime" class="nav-link" data-scroll-target="#per-case-flow-regime">Per case (flow × regime)</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">4.5</span> Summary</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jfkrawczynski/um5mee12/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./practice.html">Practice</a></li><li class="breadcrumb-item"><a href="./practice.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurements</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./4-practice.html">Practice</a></li><li class="breadcrumb-item"><a href="./4-practice.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurements</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurements</span></h1>
 </div>
@@ -247,55 +282,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>You will conduct experiments with the aim of determining the velocity field of a flow using PIV. The experiments are carried out in a glass aquarium measuring 80 x 35 x 40 cm³. An adaptable setup inside the aquarium allows for generating a recirculating flow. Its modest volume is well-suited for the space constraints of a practical laboratory exercise. However, you will notice that it has consequences on the established flow that you will analyze.</p>
-<p>The flow is generated by 4 Aqua Medic Ecodrift 4.3 pumps. These are propeller pumps commonly used in aquariums. Each pump can produce an adjustable flow rate of up to approximately 4000 l/h, thus creating a controlled recirculating flow in the aquarium.</p>
-<section id="image-recording" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="image-recording"><span class="header-section-number">4.1</span> Image recording</h2>
-<p>The images are acquired by the FlowSense 2M-165 camera, which connects directly to the computer via a USB 3 port, thus integrating the system directly within the computer without requiring an additional acquisition card. This camera offers a resolution of 1920 × 1200 pixels (2.3 megapixels), with a maximum acquisition frequency of 165 frames per second. It is therefore well-suited for time-resolved PIV for slow to moderate flows. Its pixel size is 5.9 μm, and the quantum efficiency of its sensor is greater than 70%, particularly adapted to the wavelengths of green light from lasers or LEDs. It uses a CMOS (Complementary Metal-Oxide-Semiconductor) sensor, which is widely used in modern PIV systems for its high acquisition rate.</p>
+<p>You will conduct experiments with the aim of determining the velocity field of a flow using PIV. The experiments are carried out in a recirculating-water glass tank measuring 30 x 30.5 x 200 cm³. Its modest volume is well-suited for the space constraints of a practical laboratory exercise. However, you will notice that it has consequences on the established flow that you will analyze. The pump can produce an adjustable flow rate of up to approximately 200 m<span class="math inline">\(^3\)</span>/h, thus creating a controlled recirculating flow in the aquarium.</p>
+<section id="seeding-particles" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="seeding-particles"><span class="header-section-number">4.1</span> Seeding particles</h2>
+<p>The seeding particles used are polyamide particles (PSP-50, ref. 9080A5011). These particles are produced by polymerization. They are round, but not perfectly spherical. The size distribution (diameter) of each particle is between 30 and 70 μm, with an average of 50 μm. Their density is 1.03 g/cm<span class="math inline">\(^3\)</span>, very close to that of water, which therefore limits their sedimentation. Their refractive index is 1.5.</p>
 </section>
-<section id="seeding-particles" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="seeding-particles"><span class="header-section-number">4.2</span> Seeding particles</h2>
-<p>The seeding particles used are polyamide particles (PSP-50, ref. 9080A5011). These particles are produced by polymerization. They are round, but not perfectly spherical. The size distribution (diameter) of each particle is between 30 and 70 μm, with an average of 50 μm. Their density is 1.03 g/cm³, very close to that of water, which therefore limits their sedimentation. Their refractive index is 1.5.</p>
-</section>
-<section id="light-source" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="light-source"><span class="header-section-number">4.3</span> Light source</h2>
+<section id="light-source" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="light-source"><span class="header-section-number">4.2</span> Light source</h2>
 <p>Illumination is provided by the Fiber-Lite® Mi-LED light generator (Dolan-Jenner). This system delivers white light with a color temperature of 5000 K and represents a modern and economical alternative to conventional 150 W halogen sources.</p>
 </section>
-<section id="assignment" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="assignment"><span class="header-section-number">4.4</span> Assignment</h2>
+<section id="image-recording" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="image-recording"><span class="header-section-number">4.3</span> Image recording</h2>
+<p>The images are acquired by the FlowSense 2M-165 camera, which connects directly to the computer via a USB 3 port, thus integrating the system directly within the computer without requiring an additional acquisition card. This camera offers a resolution of 1920 × 1200 pixels (2.3 megapixels), with a maximum acquisition frequency of 165 frames per second. It is therefore well-suited for time-resolved PIV for slow to moderate flows. Its pixel size is 5.9 μm, and the quantum efficiency of its sensor is greater than 70%, particularly adapted to the wavelengths of green light from lasers or LEDs. It uses a CMOS (Complementary Metal-Oxide-Semiconductor) sensor, which is widely used in modern PIV systems for its high acquisition rate.</p>
+</section>
+<section id="acquisition-protocol" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="acquisition-protocol"><span class="header-section-number">4.4</span> Acquisition protocol</h2>
+<p>This is a <strong>quick-reference checklist</strong> meant to be read once before your rotation slot, not a tutorial. The station is shared: one binome at a time. <strong>Bring a USB key</strong>.</p>
+<section id="before-your-slot-target-realizations-per-series" class="level3">
+<h3 class="anchored" data-anchor-id="before-your-slot-target-realizations-per-series">Before your slot: target realizations per series</h3>
+<ul>
+<li>The mean velocity field estimated from <code>N</code> independent realizations converges as roughly <span class="math inline">\(\sigma / \sqrt{N}\)</span>: doubling <code>N</code> only buys you a <span class="math inline">\(\sqrt 2\)</span> reduction in noise. Default: <strong>~150 independent pairs</strong> per flow/regime for the batch statistics — going from 150 to 500 only buys a factor ~1.8 in precision for over 3x the capture/transfer time.</li>
+</ul>
+</section>
+<section id="one-time-setup" class="level3">
+<h3 class="anchored" data-anchor-id="one-time-setup">One-time setup</h3>
+<ul>
+<li><strong>Calibration image.</strong> With the empty aquarium (no obstacle) and the laser sheet in place, image the dot target held flat in the sheet plane. Capture <strong>one single frame</strong>. Note which two graduations you can read clearly and their spacing in mm — you’ll pick the exact pixels later, at your laptop.</li>
+<li>Run: <code>bash  python station_qc.py calibration &lt;path-to-file&gt; --out data/real</code></li>
+</ul>
+</section>
+<section id="per-case-flow-regime" class="level3">
+<h3 class="anchored" data-anchor-id="per-case-flow-regime">Per case (flow × regime)</h3>
+<ol type="1">
+<li><p>Mount the obstacle (cylinder / step insert) or remove it (free stream).</p></li>
+<li><p>Set the pump regime (low/mid/high). Wait for the flow to visibly settle before capturing.</p></li>
+<li><p><strong>Choose <code>dt</code> (interframe time): a particle should move roughly a </strong>quarter of the final interrogation window** between the two frames. Too large a <code>dt</code> loses particles out-of-plane; too small gives displacements too close to the pixel-locking regime discussed in the Lecture. Note the <code>dt</code> you used — you’ll need it later as <code>DT_PIV_REAL</code> (notebook 5, §1). <strong>Write down the frame period you used</strong> (1 / frame rate, in seconds) — it becomes <code>DT_FRAME_REAL[regime]</code> in notebook 5 §1 (and must be mirrored in notebook 6). There is no way to recover it from the images themselves afterwards.</p></li>
+<li><p>Capture your target number of pairs.</p></li>
+<li><p><strong>Immediately</strong>, before moving to the next case, run the conversion + quick quality check:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> station_qc.py pairs <span class="op">&lt;</span>raw_dir<span class="op">&gt;</span> <span class="op">&lt;</span>flow<span class="op">&gt;</span> <span class="op">&lt;</span>regime<span class="op">&gt;</span> --out data/real</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> station_qc.py sequence <span class="op">&lt;</span>raw_dir<span class="op">&gt;</span> <span class="op">&lt;</span>regime<span class="op">&gt;</span> --out data/real</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Read the <code>[OK]</code> / <code>[CHECK]</code> line. A <code>[CHECK]</code> means too few particle images, particles too small (&lt; 2 px, risk of peak locking), or saturation — <strong>re-shoot this case now</strong> rather than discovering it later. Spot-check a couple more indices if unsure:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> station_qc.py qc data/real/<span class="op">&lt;</span>flow<span class="op">&gt;</span>/<span class="op">&lt;</span>regime<span class="op">&gt;</span>/pairs <span class="at">--limit</span> 5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Copy <code>data/real/&lt;flow&gt;/&lt;regime&gt;/</code> onto your USB key.</p></li>
+</ol>
+</section>
+</section>
+<section id="summary" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.5</span> Summary</h2>
 <p>During this practical session, you will get familiarized with a simple experimental setup designed to record particle images of a flow for which the velocity field is to be estimated.</p>
-<p>You will be asked to study three particular flows: 1. a free flow (without any obstacle) 2. the flow that develops around/behind a cylinder 3. the flow that develops behind a step</p>
-<p>each of which with three flow regimes, i.e.&nbsp;for three different flow rates as given by the pumps. Record sufficiently substantial samples to allow you to subsequently conduct statistical studies.</p>
-<p>An in-depth analysis of the obtained images will be expected. Among the points to be discussed, without being exhaustive, should include: the average size of the particle images, their density, and the dynamic range of the gray levels. To do this, you could for example use the <code>regionprops</code> library adapted from Matlab.</p>
+<blockquote class="blockquote">
+<p><strong>Assignement.</strong> You will be asked to study three particular flows:</p>
+<ol type="1">
+<li>a free flow (without any obstacle)</li>
+<li>the flow that develops around/behind a cylinder</li>
+<li>the flow that develops behind a step</li>
+</ol>
+<p>each of which with three flow regimes, i.e.&nbsp;for three different flow rates as given by the pump. Record sufficiently substantial samples to allow you to subsequently conduct statistical studies.</p>
+<p>An in-depth analysis of the obtained images will be expected. Among the points to be discussed, without being exhaustive, should include: the average size of the particle images, their density, and the dynamic range of the gray levels. To do this, you could for example use the <code>regionprops</code> library adapted from Matlab:</p>
+</blockquote>
 <div id="b226e823-7a36-4544-b3b5-c20bfdd9a6de" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary modules</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#matplotlib inline</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openpiv <span class="im">import</span> tools</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage.measure <span class="im">import</span> label, regionprops</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load a sample image</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> tools.imread(<span class="st">'your image.tif'</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.imshow(image, cmap<span class="op">=</span>plt.cm.gray)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a threshold to segment bright particles</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> np.percentile(image, <span class="dv">90</span>)  <span class="co"># adjust percentile as needed</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>binary_img <span class="op">=</span> image <span class="op">&gt;</span> threshold</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>label_img <span class="op">=</span> label(binary_img, background<span class="op">=</span><span class="dv">0</span>) <span class="co"># adjust background as needed</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>regions <span class="op">=</span> regionprops(label_img, intensity_image<span class="op">=</span>image)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> props <span class="kw">in</span> regions:</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use weighted centroid for better accuracy</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    y0, x0 <span class="op">=</span> props.weighted_centroid</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    ax.plot(x0, y0, marker<span class="op">=</span><span class="st">'x'</span>, color<span class="op">=</span><span class="st">'r'</span>, markersize<span class="op">=</span><span class="dv">6</span>)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary modules</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#matplotlib inline</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openpiv <span class="im">import</span> tools</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage.measure <span class="im">import</span> label, regionprops</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load a sample image</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> tools.imread(<span class="st">'your image.tif'</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ax.imshow(image, cmap<span class="op">=</span>plt.cm.gray)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a threshold to segment bright particles</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> np.percentile(image, <span class="dv">90</span>)  <span class="co"># adjust percentile as needed</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>binary_img <span class="op">=</span> image <span class="op">&gt;</span> threshold</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>label_img <span class="op">=</span> label(binary_img, background<span class="op">=</span><span class="dv">0</span>) <span class="co"># adjust background as needed</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>regions <span class="op">=</span> regionprops(label_img, intensity_image<span class="op">=</span>image)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> props <span class="kw">in</span> regions:</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use weighted centroid for better accuracy</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    y0, x0 <span class="op">=</span> props.weighted_centroid</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    ax.plot(x0, y0, marker<span class="op">=</span><span class="st">'x'</span>, color<span class="op">=</span><span class="st">'r'</span>, markersize<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<blockquote class="blockquote">
 <p>You will then work on the collected databases by implementing a method for evaluating velocity fields using OpenPIV. You will detail the method used, emphasizing the choice of parameters for the PIV analysis.</p>
 <p>Finally, you will develop an analysis of the obtained velocity fields based on, among other things, considerations discussed in class with Mr.&nbsp;Druault.</p>
+</blockquote>
 
 
 </section>
@@ -800,7 +875,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./advanced.html" class="pagination-link" aria-label="Advanced PIV techniques">
+      <a href="./3-advanced.html" class="pagination-link" aria-label="Advanced PIV techniques">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Advanced PIV techniques</span></span>
       </a>          
   </div>
@@ -817,7 +892,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>Copyright © 2024-2025 J.-F. Krawczynski, ce travail est placé sous licence <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1">CC BY-SA 4.0</a>. Aucune donnée personnelle n’est collectée. Fait avec <a href="https://quarto.org/">Quarto</a> et <a href="https://jupyter.org/">JupyterLab</a>.</p>
+<p>Copyright © 2025-2026 J.-F. Krawczynski, ce travail est placé sous licence <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1">CC BY-SA 4.0</a>. Aucune donnée personnelle n’est collectée. Fait avec <a href="https://quarto.org/">Quarto</a> et <a href="https://jupyter.org/">JupyterLab</a>.</p>
 <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jfkrawczynski/um5mee12/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;

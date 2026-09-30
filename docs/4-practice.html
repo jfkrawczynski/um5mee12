@@ -307,23 +307,17 @@ window.Quarto = {
 <section id="one-time-setup" class="level3">
 <h3 class="anchored" data-anchor-id="one-time-setup">One-time setup</h3>
 <ul>
-<li><strong>Calibration image.</strong> With the empty aquarium (no obstacle) and the laser sheet in place, image the dot target held flat in the sheet plane. Capture <strong>one single frame</strong>. Note which two graduations you can read clearly and their spacing in mm — you’ll pick the exact pixels later, at your laptop.</li>
-<li>Run: <code>bash  python station_qc.py calibration &lt;path-to-file&gt; --out data/real</code></li>
+<li><strong>Calibration image.</strong> With the empty aquarium (no obstacle) and the laser sheet in place, image the dot target held flat in the sheet plane. Capture <strong>one single frame</strong>. Note which two graduations you can read clearly and their spacing in mm.</li>
 </ul>
 </section>
 <section id="per-case-flow-regime" class="level3">
 <h3 class="anchored" data-anchor-id="per-case-flow-regime">Per case (flow × regime)</h3>
 <ol type="1">
-<li><p>Mount the obstacle (cylinder / step insert) or remove it (free stream).</p></li>
-<li><p>Set the pump regime (low/mid/high). Wait for the flow to visibly settle before capturing.</p></li>
-<li><p><strong>Choose <code>dt</code> (interframe time): a particle should move roughly a </strong>quarter of the final interrogation window** between the two frames. Too large a <code>dt</code> loses particles out-of-plane; too small gives displacements too close to the pixel-locking regime discussed in the Lecture. Note the <code>dt</code> you used — you’ll need it later as <code>DT_PIV_REAL</code> (notebook 5, §1). <strong>Write down the frame period you used</strong> (1 / frame rate, in seconds) — it becomes <code>DT_FRAME_REAL[regime]</code> in notebook 5 §1 (and must be mirrored in notebook 6). There is no way to recover it from the images themselves afterwards.</p></li>
-<li><p>Capture your target number of pairs.</p></li>
-<li><p><strong>Immediately</strong>, before moving to the next case, run the conversion + quick quality check:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> station_qc.py pairs <span class="op">&lt;</span>raw_dir<span class="op">&gt;</span> <span class="op">&lt;</span>flow<span class="op">&gt;</span> <span class="op">&lt;</span>regime<span class="op">&gt;</span> --out data/real</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> station_qc.py sequence <span class="op">&lt;</span>raw_dir<span class="op">&gt;</span> <span class="op">&lt;</span>regime<span class="op">&gt;</span> --out data/real</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Read the <code>[OK]</code> / <code>[CHECK]</code> line. A <code>[CHECK]</code> means too few particle images, particles too small (&lt; 2 px, risk of peak locking), or saturation — <strong>re-shoot this case now</strong> rather than discovering it later. Spot-check a couple more indices if unsure:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> station_qc.py qc data/real/<span class="op">&lt;</span>flow<span class="op">&gt;</span>/<span class="op">&lt;</span>regime<span class="op">&gt;</span>/pairs <span class="at">--limit</span> 5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Copy <code>data/real/&lt;flow&gt;/&lt;regime&gt;/</code> onto your USB key.</p></li>
+<li>Mount the obstacle (cylinder / step insert) or remove it (free stream).</li>
+<li>Set the pump regime (low/mid/high). Wait for the flow to visibly settle before capturing.</li>
+<li><strong>Choose <code>dt</code> (interframe time): a particle should move roughly a </strong>quarter of the final interrogation window** between the two frames. Too large a <code>dt</code> loses particles out-of-plane; too small gives displacements too close to the pixel-locking regime discussed in the Lecture. Note the <code>dt</code> you used, you’ll need it later.</li>
+<li>Capture your target number of pairs.</li>
+<li>Copy <code>data/real/&lt;flow&gt;/&lt;regime&gt;/</code> onto your USB key.</li>
 </ol>
 </section>
 </section>
@@ -341,31 +335,31 @@ window.Quarto = {
 <p>An in-depth analysis of the obtained images will be expected. Among the points to be discussed, without being exhaustive, should include: the average size of the particle images, their density, and the dynamic range of the gray levels. To do this, you could for example use the <code>regionprops</code> library adapted from Matlab:</p>
 </blockquote>
 <div id="b226e823-7a36-4544-b3b5-c20bfdd9a6de" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary modules</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#matplotlib inline</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openpiv <span class="im">import</span> tools</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage.measure <span class="im">import</span> label, regionprops</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load a sample image</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> tools.imread(<span class="st">'your image.tif'</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ax.imshow(image, cmap<span class="op">=</span>plt.cm.gray)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a threshold to segment bright particles</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> np.percentile(image, <span class="dv">90</span>)  <span class="co"># adjust percentile as needed</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>binary_img <span class="op">=</span> image <span class="op">&gt;</span> threshold</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>label_img <span class="op">=</span> label(binary_img, background<span class="op">=</span><span class="dv">0</span>) <span class="co"># adjust background as needed</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>regions <span class="op">=</span> regionprops(label_img, intensity_image<span class="op">=</span>image)</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> props <span class="kw">in</span> regions:</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use weighted centroid for better accuracy</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    y0, x0 <span class="op">=</span> props.weighted_centroid</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    ax.plot(x0, y0, marker<span class="op">=</span><span class="st">'x'</span>, color<span class="op">=</span><span class="st">'r'</span>, markersize<span class="op">=</span><span class="dv">6</span>)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary modules</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#matplotlib inline</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openpiv <span class="im">import</span> tools</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage.measure <span class="im">import</span> label, regionprops</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load a sample image</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> tools.imread(<span class="st">'your image.tif'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.imshow(image, cmap<span class="op">=</span>plt.cm.gray)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a threshold to segment bright particles</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> np.percentile(image, <span class="dv">90</span>)  <span class="co"># adjust percentile as needed</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>binary_img <span class="op">=</span> image <span class="op">&gt;</span> threshold</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>label_img <span class="op">=</span> label(binary_img, background<span class="op">=</span><span class="dv">0</span>) <span class="co"># adjust background as needed</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>regions <span class="op">=</span> regionprops(label_img, intensity_image<span class="op">=</span>image)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> props <span class="kw">in</span> regions:</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use weighted centroid for better accuracy</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    y0, x0 <span class="op">=</span> props.weighted_centroid</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    ax.plot(x0, y0, marker<span class="op">=</span><span class="st">'x'</span>, color<span class="op">=</span><span class="st">'r'</span>, markersize<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <blockquote class="blockquote">
 <p>You will then work on the collected databases by implementing a method for evaluating velocity fields using OpenPIV. You will detail the method used, emphasizing the choice of parameters for the PIV analysis.</p>

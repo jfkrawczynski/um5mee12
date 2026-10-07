@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./5-practice-processing.html" rel="next">
 <link href="./3-advanced.html" rel="prev">
 <link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -229,6 +229,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurements</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-practice-processing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Processing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6-practice-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Analysis</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -247,16 +259,20 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#seeding-particles" id="toc-seeding-particles" class="nav-link active" data-scroll-target="#seeding-particles"><span class="header-section-number">4.1</span> Seeding particles</a></li>
-  <li><a href="#light-source" id="toc-light-source" class="nav-link" data-scroll-target="#light-source"><span class="header-section-number">4.2</span> Light source</a></li>
-  <li><a href="#image-recording" id="toc-image-recording" class="nav-link" data-scroll-target="#image-recording"><span class="header-section-number">4.3</span> Image recording</a></li>
-  <li><a href="#acquisition-protocol" id="toc-acquisition-protocol" class="nav-link" data-scroll-target="#acquisition-protocol"><span class="header-section-number">4.4</span> Acquisition protocol</a>
+  <li><a href="#experimental-setup" id="toc-experimental-setup" class="nav-link active" data-scroll-target="#experimental-setup"><span class="header-section-number">4.1</span> Experimental setup</a>
+  <ul class="collapse">
+  <li><a href="#seeding-particles" id="toc-seeding-particles" class="nav-link" data-scroll-target="#seeding-particles">Seeding particles</a></li>
+  <li><a href="#light-source" id="toc-light-source" class="nav-link" data-scroll-target="#light-source">Light source</a></li>
+  <li><a href="#image-recording" id="toc-image-recording" class="nav-link" data-scroll-target="#image-recording">Image recording</a></li>
+  </ul></li>
+  <li><a href="#acquisition-protocol" id="toc-acquisition-protocol" class="nav-link" data-scroll-target="#acquisition-protocol"><span class="header-section-number">4.2</span> Acquisition protocol</a>
   <ul class="collapse">
   <li><a href="#before-your-slot-target-realizations-per-series" id="toc-before-your-slot-target-realizations-per-series" class="nav-link" data-scroll-target="#before-your-slot-target-realizations-per-series">Before your slot: target realizations per series</a></li>
   <li><a href="#one-time-setup" id="toc-one-time-setup" class="nav-link" data-scroll-target="#one-time-setup">One-time setup</a></li>
   <li><a href="#per-case-flow-regime" id="toc-per-case-flow-regime" class="nav-link" data-scroll-target="#per-case-flow-regime">Per case (flow × regime)</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">4.5</span> Summary</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">4.3</span> Summary</a></li>
+  <li><a href="#appendix-converting-your-images" id="toc-appendix-converting-your-images" class="nav-link" data-scroll-target="#appendix-converting-your-images"><span class="header-section-number">4.4</span> Appendix: converting your images</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jfkrawczynski/um5mee12/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -282,21 +298,24 @@ window.Quarto = {
 </header>
 
 
-<p>You will conduct experiments with the aim of determining the velocity field of a flow using PIV. The experiments are carried out in a recirculating-water glass tank measuring 30 x 30.5 x 200 cm³. Its modest volume is well-suited for the space constraints of a practical laboratory exercise. However, you will notice that it has consequences on the established flow that you will analyze. The pump can produce an adjustable flow rate of up to approximately 200 m<span class="math inline">\(^3\)</span>/h, thus creating a controlled recirculating flow in the aquarium.</p>
-<section id="seeding-particles" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="seeding-particles"><span class="header-section-number">4.1</span> Seeding particles</h2>
+<p>You will conduct experiments with the aim of determining the velocity field of a flow using PIV. The experiments are carried out in a recirculating-water glass tank measuring 30 x 35 x 200 cm³. Its modest volume is well-suited for the space constraints of a practical laboratory exercise. However, you will notice that it has <strong>consequences on the established flow</strong> that you will analyze. The pump can produce an adjustable flow rate of up to approximately 200 m<span class="math inline">\(^3\)</span>/h, thus creating a controlled recirculating flow in the aquarium.</p>
+<section id="experimental-setup" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="experimental-setup"><span class="header-section-number">4.1</span> Experimental setup</h2>
+<section id="seeding-particles" class="level3">
+<h3 class="anchored" data-anchor-id="seeding-particles">Seeding particles</h3>
 <p>The seeding particles used are polyamide particles (PSP-50, ref. 9080A5011). These particles are produced by polymerization. They are round, but not perfectly spherical. The size distribution (diameter) of each particle is between 30 and 70 μm, with an average of 50 μm. Their density is 1.03 g/cm<span class="math inline">\(^3\)</span>, very close to that of water, which therefore limits their sedimentation. Their refractive index is 1.5.</p>
 </section>
-<section id="light-source" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="light-source"><span class="header-section-number">4.2</span> Light source</h2>
+<section id="light-source" class="level3">
+<h3 class="anchored" data-anchor-id="light-source">Light source</h3>
 <p>Illumination is provided by the Fiber-Lite® Mi-LED light generator (Dolan-Jenner). This system delivers white light with a color temperature of 5000 K and represents a modern and economical alternative to conventional 150 W halogen sources.</p>
 </section>
-<section id="image-recording" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="image-recording"><span class="header-section-number">4.3</span> Image recording</h2>
-<p>The images are acquired by the FlowSense 2M-165 camera, which connects directly to the computer via a USB 3 port, thus integrating the system directly within the computer without requiring an additional acquisition card. This camera offers a resolution of 1920 × 1200 pixels (2.3 megapixels), with a maximum acquisition frequency of 165 frames per second. It is therefore well-suited for time-resolved PIV for slow to moderate flows. Its pixel size is 5.9 μm, and the quantum efficiency of its sensor is greater than 70%, particularly adapted to the wavelengths of green light from lasers or LEDs. It uses a CMOS (Complementary Metal-Oxide-Semiconductor) sensor, which is widely used in modern PIV systems for its high acquisition rate.</p>
+<section id="image-recording" class="level3">
+<h3 class="anchored" data-anchor-id="image-recording">Image recording</h3>
+<p>The images are acquired by the FlowSense 2M-165 camera, which connects directly to the computer via a USB 3 port, thus integrating the system directly within the computer without requiring an additional acquisition card. This camera offers a resolution of 1920 × 1200 pixels (2.3 megapixels), with a maximum acquisition frequency of 160 frames per second. It is therefore well-suited for time-resolved PIV for slow to moderate flows. Its pixel size is 5.9 μm, and the quantum efficiency of its sensor is greater than 70%, particularly adapted to the wavelengths of green light from lasers or LEDs. It uses a CMOS (Complementary Metal-Oxide-Semiconductor) sensor, which is widely used in modern PIV systems for its high acquisition rate.</p>
 </section>
-<section id="acquisition-protocol" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="acquisition-protocol"><span class="header-section-number">4.4</span> Acquisition protocol</h2>
+</section>
+<section id="acquisition-protocol" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="acquisition-protocol"><span class="header-section-number">4.2</span> Acquisition protocol</h2>
 <p>This is a <strong>quick-reference checklist</strong> meant to be read once before your rotation slot, not a tutorial. The station is shared: one binome at a time. <strong>Bring a USB key</strong>.</p>
 <section id="before-your-slot-target-realizations-per-series" class="level3">
 <h3 class="anchored" data-anchor-id="before-your-slot-target-realizations-per-series">Before your slot: target realizations per series</h3>
@@ -307,7 +326,7 @@ window.Quarto = {
 <section id="one-time-setup" class="level3">
 <h3 class="anchored" data-anchor-id="one-time-setup">One-time setup</h3>
 <ul>
-<li><strong>Calibration image.</strong> With the empty aquarium (no obstacle) and the laser sheet in place, image the dot target held flat in the sheet plane. Capture <strong>one single frame</strong>. Note which two graduations you can read clearly and their spacing in mm.</li>
+<li><strong>Calibration image.</strong> With the empty aquarium (no obstacle) and the illumination sheet in place, image the dot target held flat in the sheet plane. Capture <strong>one single frame</strong>. Note which two graduations you can read clearly and their spacing in mm.</li>
 </ul>
 </section>
 <section id="per-case-flow-regime" class="level3">
@@ -315,14 +334,14 @@ window.Quarto = {
 <ol type="1">
 <li>Mount the obstacle (cylinder / step insert) or remove it (free stream).</li>
 <li>Set the pump regime (low/mid/high). Wait for the flow to visibly settle before capturing.</li>
-<li><strong>Choose <code>dt</code> (interframe time): a particle should move roughly a </strong>quarter of the final interrogation window** between the two frames. Too large a <code>dt</code> loses particles out-of-plane; too small gives displacements too close to the pixel-locking regime discussed in the Lecture. Note the <code>dt</code> you used, you’ll need it later.</li>
-<li>Capture your target number of pairs.</li>
-<li>Copy <code>data/real/&lt;flow&gt;/&lt;regime&gt;/</code> onto your USB key.</li>
+<li><strong>Choose <code>dt</code></strong> (interframe time): a particle should move roughly a <strong>quarter of the final interrogation window</strong> between the two frames. Too large a <code>dt</code> loses particles out-of-plane; too small gives displacements too close to the pixel-locking regime discussed in the Lecture. <strong>Write down the dt used</strong> (1 / frame rate, in seconds), there is no way to recover it from the images themselves afterwards.</li>
+<li>Capture your target number of images.</li>
+<li>Copy the raw TIFF frames for this case onto a folder on your USB key (one folder per flow/regime — you’ll sort and convert them, back at your laptop — see the Appendix at the end of this notebook for the conversion).</li>
 </ol>
 </section>
 </section>
-<section id="summary" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.5</span> Summary</h2>
+<section id="summary" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.3</span> Summary</h2>
 <p>During this practical session, you will get familiarized with a simple experimental setup designed to record particle images of a flow for which the velocity field is to be estimated.</p>
 <blockquote class="blockquote">
 <p><strong>Assignement.</strong> You will be asked to study three particular flows:</p>
@@ -365,6 +384,55 @@ window.Quarto = {
 <p>You will then work on the collected databases by implementing a method for evaluating velocity fields using OpenPIV. You will detail the method used, emphasizing the choice of parameters for the PIV analysis.</p>
 <p>Finally, you will develop an analysis of the obtained velocity fields based on, among other things, considerations discussed in class with Mr.&nbsp;Druault.</p>
 </blockquote>
+</section>
+<section id="appendix-converting-your-images" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="appendix-converting-your-images"><span class="header-section-number">4.4</span> Appendix: converting your images</h2>
+<p>Use the function below to convert the raw TIFF frames of a folder into PNG. Non-8-bit TIFFs are rescaled to 8-bit first — this is also what makes the PNGs much smaller than the raw TIFFs.</p>
+<p>Call <code>convert_to_png(src_dir, dst_dir)</code> once per folder you captured. Pass <code>prefix="..."</code> if you also want to rename the files: the trailing number of each file name is kept and everything before it is replaced by your prefix.</p>
+<div id="a4f55853" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pathlib</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imageio.v3 <span class="im">as</span> iio</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_to_png(src_dir, dst_dir<span class="op">=</span><span class="va">None</span>, prefix<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Convert every .tif/.tiff image of `src_dir` to a .png in `dst_dir`</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    (default: next to the originals).</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    prefix: if given, rename the files -- the trailing number of each name</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">    is kept (same zero-padding), everything before it is replaced by `prefix`.</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    src_dir <span class="op">=</span> pathlib.Path(src_dir)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    dst_dir <span class="op">=</span> pathlib.Path(dst_dir) <span class="cf">if</span> dst_dir <span class="cf">else</span> src_dir</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> <span class="bu">sorted</span>(f <span class="cf">for</span> f <span class="kw">in</span> src_dir.iterdir() <span class="cf">if</span> f.suffix.lower() <span class="kw">in</span> (<span class="st">'.tif'</span>, <span class="st">'.tiff'</span>))</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> files:</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"No .tif/.tiff files found in </span><span class="sc">{</span>src_dir<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    dst_dir.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> files:</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        img <span class="op">=</span> iio.imread(f)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> img.dtype <span class="op">!=</span> np.uint8:       <span class="co"># rescale to 8 bit -&gt; much smaller PNG</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            img <span class="op">=</span> img.astype(np.float64)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            img <span class="op">-=</span> img.<span class="bu">min</span>()</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> img.<span class="bu">max</span>() <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                img <span class="op">=</span> img <span class="op">/</span> img.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">255.0</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            img <span class="op">=</span> img.astype(np.uint8)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        stem <span class="op">=</span> f.stem</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> prefix <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>            m <span class="op">=</span> re.match(<span class="vs">r'</span><span class="dv">^</span><span class="kw">(</span><span class="dv">.</span><span class="op">*?</span><span class="kw">)(</span><span class="dv">\d</span><span class="op">+</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>, stem)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>            stem <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>prefix<span class="sc">}{</span><span class="bu">int</span>(m.group(<span class="dv">2</span>))<span class="sc">:</span><span class="dv">0</span>{<span class="bu">len</span>(m.group(<span class="dv">2</span>))}d<span class="sc">}</span><span class="ss">"</span> <span class="cf">if</span> m <span class="cf">else</span> <span class="ss">f"</span><span class="sc">{</span>prefix<span class="sc">}{</span>stem<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        iio.imwrite(dst_dir <span class="op">/</span> <span class="ss">f"</span><span class="sc">{</span>stem<span class="sc">}</span><span class="ss">.png"</span>, img)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>f<span class="sc">.</span>name<span class="sc">}</span><span class="ss"> -&gt; </span><span class="sc">{</span>stem<span class="sc">}</span><span class="ss">.png"</span>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Done: </span><span class="sc">{</span><span class="bu">len</span>(files)<span class="sc">}</span><span class="ss"> image(s) converted in </span><span class="sc">{</span>dst_dir<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Example -- adapt the paths to your USB key:</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co"># convert_to_png("/Volumes/USB_KEY/cylinder_mid", "data/cylinder/mid")</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co"># convert_to_png("/Volumes/USB_KEY/calib", "data/calibration")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
 </section>
@@ -874,8 +942,8 @@ window.Quarto = {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./5-practice-processing.html" class="pagination-link" aria-label="Processing">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Processing</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

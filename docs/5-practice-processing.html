@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Processing – Insights of Particle Image Velocimetry</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./6-practice-analysis.html" rel="next">
+<link href="./4-practice.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-a6e161b2431e1f94a14e0f5d32135a3c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-25a4e8620ae17d49cd0c3861fdf92567.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./4-practice.html">Practice</a></li><li class="breadcrumb-item"><a href="./5-practice-processing.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Processing</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Insights of Particle Image Velocimetry</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/jfkrawczynski/um5mee12" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Insights-of-Particle-Image-Velocimetry.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1-piv_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of PIV</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2-openpiv_tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">OpenPIV tutorial</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3-advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Advanced PIV techniques</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Practice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4-practice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-practice-processing.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Processing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6-practice-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Analysis</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset"><span class="header-section-number">5.1</span> Dataset</a></li>
+  <li><a href="#image-quality-diagnostics" id="toc-image-quality-diagnostics" class="nav-link" data-scroll-target="#image-quality-diagnostics"><span class="header-section-number">5.2</span> Image-quality diagnostics</a></li>
+  <li><a href="#masking" id="toc-masking" class="nav-link" data-scroll-target="#masking"><span class="header-section-number">5.3</span> Masking</a></li>
+  <li><a href="#batch-multi-pass-processing" id="toc-batch-multi-pass-processing" class="nav-link" data-scroll-target="#batch-multi-pass-processing"><span class="header-section-number">5.4</span> Batch multi-pass processing</a></li>
+  <li><a href="#quick-quality-control" id="toc-quick-quality-control" class="nav-link" data-scroll-target="#quick-quality-control"><span class="header-section-number">5.5</span> Quick quality control</a></li>
+  <li><a href="#summary-next-step" id="toc-summary-next-step" class="nav-link" data-scroll-target="#summary-next-step"><span class="header-section-number">5.6</span> Summary &amp; next step</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/jfkrawczynski/um5mee12/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./4-practice.html">Practice</a></li><li class="breadcrumb-item"><a href="./5-practice-processing.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Processing</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Processing</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This notebook turns the “Measurements” assignment (Chapter 4) into a runnable, guided pipeline, applied to <strong>your own images</strong>.</p>
+<p>It is written as a <strong>generic template</strong>: the same code processes all three flows studied during the lab sessions — a free stream, the wake of a cylinder, and the flow behind a backward-facing step — at the three pump regimes. This is not meant to be a complete overview.</p>
+<blockquote class="blockquote">
+<p><strong>About the examples shown below.</strong> This statement was written before any student data existed, so the walkthrough is illustrated with a synthetic placeholder dataset (<code>synthetic_piv.py</code>) — just to orient you towards the analyses expected at each step. Set <code>DATA_SOURCE</code> to <code>"real"</code> in §1 and everything below runs the same way on your own images instead; the few places marked 🔁 are where real data needs a value you measure yourself rather than one we generated.</p>
+</blockquote>
+<p>This builds directly on:</p>
+<ul>
+<li>Chapter 1-2 (cross-correlation, <code>extended_search_area_piv</code>)</li>
+<li>Chapter 3 (multi-pass, window deformation, <code>PIVSettings</code> / <code>windef.piv</code>, vector validation)</li>
+</ul>
+<div id="d580b8db" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-15T12:57:52.712804Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-15T12:57:52.712696Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-15T12:57:53.585568Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-15T12:57:53.585276Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard imports</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pathlib, shutil, time, io, contextlib</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imageio.v3 <span class="im">as</span> iio</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openpiv <span class="im">import</span> tools, windef</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage.measure <span class="im">import</span> label, regionprops</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">@contextlib.contextmanager</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> quiet():</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># OpenPIV's windef.piv() is very verbose!</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> contextlib.redirect_stdout(io.StringIO()):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># synthetic data generator for the examples in this notebook</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>sys.path.insert(<span class="dv">0</span>, <span class="st">'.'</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> synthetic_piv <span class="im">import</span> (</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    render_pair, render_sequence, velocity_field, solid_mask,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    reynolds_number, shedding_frequency,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    FLOWS, REGIMES, IMG_SHAPE, CAL, FOV_MM,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    CYL_X_MM, CYL_Y_MM, CYL_D_MM, STEP_X_MM, STEP_H_MM, STEP_LR_MM,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="dataset" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="dataset"><span class="header-section-number">5.1</span> Dataset</h2>
+<p><code>FLOWS</code> are the three configurations studied in the lab (<code>"free"</code>, <code>"cylinder"</code>, <code>"step"</code>), each run at three regimes (<code>"low"</code>, <code>"mid"</code>, <code>"high"</code>) corresponding to the three pump settings.</p>
+<p>Each sequence of images must sit in <code>data/real/&lt;flow&gt;/&lt;regime&gt;/</code> as a series of <code>.png</code> files.</p>
+<div id="data-source-toggle" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-15T12:57:53.587204Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-15T12:57:53.587084Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-15T12:57:57.200234Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-15T12:57:57.199910Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================================</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 🔁 DATA SOURCE -- this is the one switch to flip once your own images are</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ready.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================================</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>DATA_SOURCE <span class="op">=</span> <span class="st">"synthetic"</span>   <span class="co"># "synthetic" or "real"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 🔁 real only: time between the two consecutive frames.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>DT_PIV_REAL <span class="op">=</span> <span class="fl">0.001</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>DT_FRAME_REAL <span class="op">=</span> {<span class="st">"low"</span>: <span class="va">None</span>, <span class="st">"mid"</span>: <span class="va">None</span>, <span class="st">"high"</span>: <span class="va">None</span>}</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>N_REALIZATIONS_SYNTHETIC <span class="op">=</span> <span class="dv">10</span>   <span class="co"># only used to generate the synthetic placeholder</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>DT_PIV_SYNTHETIC <span class="op">=</span> <span class="fl">0.06</span>         <span class="co"># s, only used to generate the synthetic placeholder</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># One folder per case: DATA_ROOT/&lt;flow&gt;/&lt;regime&gt;/*.png.</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>DATA_ROOT <span class="op">=</span> pathlib.Path(<span class="st">'data/synthetic'</span> <span class="cf">if</span> DATA_SOURCE <span class="op">==</span> <span class="st">"synthetic"</span> <span class="cf">else</span> <span class="st">'data/real'</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>DT_PIV <span class="op">=</span> DT_PIV_SYNTHETIC <span class="cf">if</span> DATA_SOURCE <span class="op">==</span> <span class="st">"synthetic"</span> <span class="cf">else</span> DT_PIV_REAL</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> frames_of(flow, regime):</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Image sequence of one case, in natural order."""</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tools.natural_sort(<span class="bu">list</span>((DATA_ROOT <span class="op">/</span> flow <span class="op">/</span> regime).glob(<span class="st">'*.png'</span>)))</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_synthetic_dataset():</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Write the placeholder sequences: for each case, 2 x N_REALIZATIONS_SYNTHETIC</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">    frames (A, B, A, B, ...) as DATA_ROOT/&lt;flow&gt;/&lt;regime&gt;/frame_NNNN.png."""</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> DATA_ROOT.exists():</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        shutil.rmtree(DATA_ROOT)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> flow <span class="kw">in</span> FLOWS:</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> regime <span class="kw">in</span> REGIMES:</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>            out_dir <span class="op">=</span> DATA_ROOT <span class="op">/</span> flow <span class="op">/</span> regime</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>            out_dir.mkdir(parents<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>            rng_seed_base <span class="op">=</span> <span class="bu">hash</span>((flow, regime)) <span class="op">%</span> <span class="dv">10_000</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N_REALIZATIONS_SYNTHETIC):</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                t_sample <span class="op">=</span> np.random.default_rng(rng_seed_base <span class="op">+</span> i).uniform(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>                a, b, _ <span class="op">=</span> render_pair(flow, regime, t<span class="op">=</span>t_sample, dt<span class="op">=</span>DT_PIV_SYNTHETIC,</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>                                       seed<span class="op">=</span>rng_seed_base <span class="op">+</span> i)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>                iio.imwrite(<span class="bu">str</span>(out_dir <span class="op">/</span> <span class="ss">f'frame_</span><span class="sc">{</span><span class="dv">2</span> <span class="op">*</span> i<span class="sc">:04d}</span><span class="ss">.png'</span>), a)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                iio.imwrite(<span class="bu">str</span>(out_dir <span class="op">/</span> <span class="ss">f'frame_</span><span class="sc">{</span><span class="dv">2</span> <span class="op">*</span> i <span class="op">+</span> <span class="dv">1</span><span class="sc">:04d}</span><span class="ss">.png'</span>), b)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> DATA_SOURCE <span class="op">==</span> <span class="st">"synthetic"</span>:</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    generate_synthetic_dataset()</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> flow <span class="kw">in</span> FLOWS:</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> regime <span class="kw">in</span> REGIMES:</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>        n_frames <span class="op">=</span> <span class="bu">len</span>(frames_of(flow, regime))</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n_frames <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">FileNotFoundError</span>(</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"No .png frames found in </span><span class="sc">{</span>DATA_ROOT <span class="op">/</span> flow <span class="op">/</span> regime<span class="sc">}</span><span class="ss">. Convert your "</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"recorded sequence for this case there first (see the Appendix of Chapter 4)."</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n_frames <span class="op">%</span> <span class="dv">2</span>:</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"</span><span class="sc">{</span>DATA_ROOT <span class="op">/</span> flow <span class="op">/</span> regime<span class="sc">}</span><span class="ss">: odd number of frames (</span><span class="sc">{</span>n_frames<span class="sc">}</span><span class="ss">) -- "</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"pairing with '(1+2),(3+4)' (§5) needs an even number, remove the extra one."</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>flow<span class="sc">:10s}</span><span class="ss"> </span><span class="sc">{</span>regime<span class="sc">:6s}</span><span class="ss"> -&gt; </span><span class="sc">{</span>n_frames<span class="sc">}</span><span class="ss"> frames"</span>)</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>IMAGE_SHAPE <span class="op">=</span> iio.imread(frames_of(FLOWS[<span class="dv">0</span>], <span class="bu">list</span>(REGIMES)[<span class="dv">0</span>])[<span class="dv">0</span>]).shape</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"image shape: </span><span class="sc">{</span>IMAGE_SHAPE<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>image shape: (192, 384)</code></pre>
+</div>
+</div>
+<div id="b20160ff" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-15T12:57:57.201573Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-15T12:57:57.201463Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-15T12:57:57.203866Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-15T12:57:57.203595Z&quot;}}" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'flow'</span><span class="sc">:10s}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'regime'</span><span class="sc">:6s}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'U0 (mm/s)'</span><span class="sc">:&gt;10s}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'Re'</span><span class="sc">:&gt;8s}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'f_shed (Hz)'</span><span class="sc">:&gt;12s}</span><span class="ss">"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> flow <span class="kw">in</span> FLOWS:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> regime <span class="kw">in</span> REGIMES:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        U0 <span class="op">=</span> <span class="fl">60.0</span> <span class="op">*</span> REGIMES[regime]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        f_str <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>shedding_frequency(regime)<span class="sc">:.3f}</span><span class="ss">"</span> <span class="cf">if</span> flow <span class="op">==</span> <span class="st">'cylinder'</span> <span class="cf">else</span> <span class="st">"-"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>flow<span class="sc">:10s}</span><span class="ss"> </span><span class="sc">{</span>regime<span class="sc">:6s}</span><span class="ss"> </span><span class="sc">{</span>U0<span class="sc">:10.1f}</span><span class="ss"> </span><span class="sc">{</span>reynolds_number(flow, regime)<span class="sc">:8.0f}</span><span class="ss"> </span><span class="sc">{</span>f_str<span class="sc">:&gt;12s}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>flow       regime  U0 (mm/s)       Re  f_shed (Hz)
+free       low          36.0      540            -
+free       mid          60.0      900            -
+free       high         90.0     1350            -
+cylinder   low          36.0      432        0.600
+cylinder   mid          60.0      720        1.000
+cylinder   high         90.0     1080        1.500
+step       low          36.0      540            -
+step       mid          60.0      900            -
+step       high         90.0     1350            -</code></pre>
+</div>
+</div>
+<div id="f6cec5da" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-15T12:57:57.205182Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-15T12:57:57.205079Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-15T12:57:57.367748Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-15T12:57:57.367442Z&quot;}}" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview one image pair per flow (mid regime), straight from disk</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">4</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, flow <span class="kw">in</span> <span class="bu">zip</span>(axs, FLOWS):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> iio.imread(frames_of(flow, <span class="st">'mid'</span>)[<span class="dv">0</span>])</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    ax.imshow(a, cmap<span class="op">=</span><span class="st">'gray'</span>, vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">255</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'</span><span class="sc">{</span>flow<span class="sc">}</span><span class="ss"> (frame A, mid regime)'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'x (px)'</span>)<span class="op">;</span> ax.set_ylabel(<span class="st">'y (px)'</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5-practice-processing_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="image-quality-diagnostics" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="image-quality-diagnostics"><span class="header-section-number">5.2</span> Image-quality diagnostics</h2>
+<p>Following Chapter 4, before running any correlation we look at the raw images: particle image size, density and grey-level dynamic range. The code below is the same <code>regionprops</code>-based approach, applied here to one of our synthetic frames — apply it unchanged to a sample of your own images.</p>
+<div id="e67ba1fc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-15T12:57:57.369388Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-15T12:57:57.369287Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-15T12:57:57.781504Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-15T12:57:57.781188Z&quot;}}" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> iio.imread(frames_of(<span class="st">'cylinder'</span>, <span class="st">'mid'</span>)[<span class="dv">0</span>])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> np.percentile(sample, <span class="dv">90</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>binary_img <span class="op">=</span> sample <span class="op">&gt;</span> threshold</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>label_img <span class="op">=</span> label(binary_img, background<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>regions <span class="op">=</span> regionprops(label_img, intensity_image<span class="op">=</span>sample)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>diam_px <span class="op">=</span> np.array([<span class="dv">2</span> <span class="op">*</span> np.sqrt(r.area <span class="op">/</span> np.pi) <span class="cf">for</span> r <span class="kw">in</span> regions])</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>n_particles <span class="op">=</span> <span class="bu">len</span>(regions)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>density <span class="op">=</span> n_particles <span class="op">/</span> (sample.shape[<span class="dv">0</span>] <span class="op">*</span> sample.shape[<span class="dv">1</span>])  <span class="co"># particles / px^2</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">4</span>))</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].imshow(sample, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> regions:</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    y0, x0 <span class="op">=</span> r.weighted_centroid</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    axs[<span class="dv">0</span>].plot(x0, y0, marker<span class="op">=</span><span class="st">'x'</span>, color<span class="op">=</span><span class="st">'r'</span>, markersize<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_title(<span class="ss">f'</span><span class="sc">{</span>n_particles<span class="sc">}</span><span class="ss"> detected particle images'</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].hist(diam_px, bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_xlabel(<span class="st">'apparent particle diameter (px)'</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_ylabel(<span class="st">'count'</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_title(<span class="st">'particle image size distribution'</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"seeding density        : </span><span class="sc">{</span>density<span class="op">*</span><span class="fl">1e3</span><span class="sc">:.3f}</span><span class="ss"> 10^-3 particles px^2"</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"mean apparent diameter : </span><span class="sc">{</span>diam_px<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> px"</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"dynamic range          : </span><span class="sc">{</span>sample<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>sample<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss"> (8-bit)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5-practice-processing_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>seeding density        : 8.314 10^-3 particles px^2
+mean apparent diameter : 3.76 px
+dynamic range          : 0 - 255 (8-bit)</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>On real images</strong>, report these numbers for each of your recordings and compare with what you obtained in the theory part.</p>
+</blockquote>
+</section>
+<section id="masking" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="masking"><span class="header-section-number">5.3</span> Masking</h2>
+<p>Within an obstacle part of the field of view (cylinder or step): no particles, no valid vectors there. OpenPIV’s <code>windef.PIVSettings.static_mask</code> accepts a boolean array (<code>True</code> = masked) the same size as the images.</p>
+<p>On real images, <code>mask_for(flow)</code> below reads off the obstacle geometry (here, in mm but can be written in pxl) from a representative frame. <code>openpiv.preprocess.dynamic_masking</code> is an alternative if a simple circle/rectangle isn’t a good enough fit (worth trying if the parametric mask leaves visible artifacts at the obstacle edge).</p>
+<div id="27f554f7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-15T12:57:57.787245Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-15T12:57:57.787150Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-15T12:57:57.900290Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-15T12:57:57.899991Z&quot;}}" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mask_for(flow):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ny, nx <span class="op">=</span> IMAGE_SHAPE</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    xs_px, ys_px <span class="op">=</span> np.meshgrid(np.arange(nx), np.arange(ny))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    x_mm, y_mm <span class="op">=</span> xs_px <span class="op">/</span> scaling_factor, ys_px <span class="op">/</span> scaling_factor</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> DATA_SOURCE <span class="op">==</span> <span class="st">"synthetic"</span>:</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> solid_mask(flow, x_mm, y_mm)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 🔁 Real, parametric mask -- fill in from a representative frame (§1/§2):</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> flow <span class="op">==</span> <span class="st">'cylinder'</span>:</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        cx_mm, cy_mm, d_mm <span class="op">=</span> <span class="fl">35.0</span>, y_mm.<span class="bu">max</span>() <span class="op">/</span> <span class="dv">2</span>, <span class="fl">12.0</span>   <span class="co"># 🔁 centre (x,y), diameter, mm</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (x_mm <span class="op">-</span> cx_mm) <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> (y_mm <span class="op">-</span> cy_mm) <span class="op">**</span> <span class="dv">2</span> <span class="op">&lt;</span> (d_mm <span class="op">/</span> <span class="dv">2</span>) <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> flow <span class="op">==</span> <span class="st">'step'</span>:</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        step_x_mm, step_h_mm <span class="op">=</span> <span class="fl">30.0</span>, <span class="fl">15.0</span>                  <span class="co"># 🔁 step location, height, mm</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (x_mm <span class="op">&lt;</span> step_x_mm) <span class="op">&amp;</span> (y_mm <span class="op">&lt;</span> step_h_mm)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.zeros((ny, nx), dtype<span class="op">=</span><span class="bu">bool</span>)   <span class="co"># free stream: nothing to mask</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="fl">3.2</span>))</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, flow <span class="kw">in</span> <span class="bu">zip</span>(axs, FLOWS):</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> mask_for(flow)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    ax.imshow(m, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'</span><span class="sc">{</span>flow<span class="sc">}</span><span class="ss">: static mask (</span><span class="sc">{</span>m<span class="sc">.</span>mean()<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">% of FOV)'</span>)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5-practice-processing_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="batch-multi-pass-processing" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="batch-multi-pass-processing"><span class="header-section-number">5.4</span> Batch multi-pass processing</h2>
+<p>We now run the advanced pipeline from Chapter 3 (<code>PIVSettings</code> + <code>windef.piv</code>) over a <strong>batch of independent realizations</strong> for every flow/regime combination.</p>
+<p>Pairs are built from the sequence with <code>settings.frame_pattern_b = '(1+2),(3+4)'</code> (frames 1+2, then 3+4, …), as in Chapter 3.</p>
+<div id="62c72f50" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-15T12:57:57.901731Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-15T12:57:57.901608Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-15T12:58:12.167026Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-15T12:58:12.166731Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Default window (64-&gt;32-&gt;16 px), to be adapted.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>DEFAULT_WINDOWSIZES, DEFAULT_OVERLAP <span class="op">=</span> (<span class="dv">64</span>, <span class="dv">32</span>, <span class="dv">16</span>), (<span class="dv">32</span>, <span class="dv">16</span>, <span class="dv">8</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>WINDOWSIZES <span class="op">=</span> {<span class="st">"step"</span>: (<span class="dv">48</span>, <span class="dv">24</span>, <span class="dv">12</span>)}</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>OVERLAP <span class="op">=</span> {<span class="st">"step"</span>: (<span class="dv">24</span>, <span class="dv">12</span>, <span class="dv">6</span>)}</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> windows_for(flow):</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> WINDOWSIZES.get(flow, DEFAULT_WINDOWSIZES), OVERLAP.get(flow, DEFAULT_OVERLAP)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>RESULTS_ROOT <span class="op">=</span> pathlib.Path(<span class="st">'results'</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> RESULTS_ROOT.exists():</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    shutil.rmtree(RESULTS_ROOT)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_piv_settings(image_dir, save_dir, mask, dt, suffix, windowsizes, overlap,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                       pattern_a<span class="op">=</span><span class="st">'*.png'</span>, pattern_b<span class="op">=</span><span class="st">'(1+2),(3+4)'</span>):</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> windef.PIVSettings()</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    s.filepath_images <span class="op">=</span> image_dir</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    s.save_path <span class="op">=</span> save_dir</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    s.save_folder_suffix <span class="op">=</span> suffix</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    s.frame_pattern_a <span class="op">=</span> pattern_a</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    s.frame_pattern_b <span class="op">=</span> pattern_b</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    s.roi <span class="op">=</span> <span class="st">'full'</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    s.static_mask <span class="op">=</span> mask</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    s.windowsizes <span class="op">=</span> windowsizes</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    s.overlap <span class="op">=</span> overlap</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    s.num_iterations <span class="op">=</span> <span class="bu">len</span>(windowsizes)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    s.correlation_method <span class="op">=</span> <span class="st">'circular'</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    s.subpixel_method <span class="op">=</span> <span class="st">'gaussian'</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    s.deformation_method <span class="op">=</span> <span class="st">'symmetric'</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    s.validation_first_pass <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    s.min_max_u_disp <span class="op">=</span> (<span class="op">-</span><span class="dv">200</span>, <span class="dv">200</span>)</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    s.min_max_v_disp <span class="op">=</span> (<span class="op">-</span><span class="dv">200</span>, <span class="dv">200</span>)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    s.std_threshold <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    s.median_threshold <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    s.sig2noise_threshold <span class="op">=</span> <span class="fl">1.1</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    s.replace_vectors <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    s.smoothn <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    s.smoothn_p <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    s.filter_method <span class="op">=</span> <span class="st">'localmean'</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    s.max_filter_iteration <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    s.filter_kernel_size <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    s.scaling_factor <span class="op">=</span> scaling_factor   <span class="co"># px -&gt; mm</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>    s.dt <span class="op">=</span> dt</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    s.show_plot <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>    s.save_plot <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> time.time()</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> flow <span class="kw">in</span> FLOWS:</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>    mask <span class="op">=</span> mask_for(flow)</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>    windowsizes, overlap <span class="op">=</span> windows_for(flow)</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> regime <span class="kw">in</span> REGIMES:</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>        image_dir <span class="op">=</span> DATA_ROOT <span class="op">/</span> flow <span class="op">/</span> regime</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>        n_pairs <span class="op">=</span> <span class="bu">len</span>(frames_of(flow, regime)) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>        settings <span class="op">=</span> make_piv_settings(</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>            image_dir<span class="op">=</span>image_dir,</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>            save_dir<span class="op">=</span>RESULTS_ROOT <span class="op">/</span> flow <span class="op">/</span> regime,</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>            mask<span class="op">=</span>mask, dt<span class="op">=</span>DT_PIV, suffix<span class="op">=</span><span class="st">'batch'</span>,</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>            windowsizes<span class="op">=</span>windowsizes, overlap<span class="op">=</span>overlap,</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> quiet():</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>            windef.piv(settings)</span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>flow<span class="sc">:10s}</span><span class="ss"> </span><span class="sc">{</span>regime<span class="sc">:6s}</span><span class="ss"> -&gt; </span><span class="sc">{</span>n_pairs<span class="sc">}</span><span class="ss"> pairs processed "</span></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>              <span class="ss">f"(final window </span><span class="sc">{</span>windowsizes[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss"> px)"</span>)</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">All flow/regime cases processed in </span><span class="sc">{</span>time<span class="sc">.</span>time()<span class="op">-</span>t0<span class="sc">:.1f}</span><span class="ss"> s"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  free       low    -&gt; 10 pairs processed (final window 16 px)
+  free       mid    -&gt; 10 pairs processed (final window 16 px)
+  free       high   -&gt; 10 pairs processed (final window 16 px)
+  cylinder   low    -&gt; 10 pairs processed (final window 16 px)
+  cylinder   mid    -&gt; 10 pairs processed (final window 16 px)
+  cylinder   high   -&gt; 10 pairs processed (final window 16 px)
+  step       low    -&gt; 10 pairs processed (final window 12 px)
+  step       mid    -&gt; 10 pairs processed (final window 12 px)
+  step       high   -&gt; 10 pairs processed (final window 12 px)
+
+All flow/regime cases processed in 15.0 s</code></pre>
+</div>
+</div>
+</section>
+<section id="quick-quality-control" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="quick-quality-control"><span class="header-section-number">5.5</span> Quick quality control</h2>
+<p>Before moving to the analysis notebook, check how many vectors needed validation/replacement in each case — a first, cheap indicator of where the PIV parameters (window sizes, thresholds) might need adjusting.</p>
+<div id="5093b464" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-15T12:59:05.560064Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-15T12:59:05.559831Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-15T12:59:05.607686Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-15T12:59:05.607429Z&quot;}}" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> batch_invalid_fraction(flow, regime):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    windowsizes, _ <span class="op">=</span> windows_for(flow)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    folder <span class="op">=</span> RESULTS_ROOT <span class="op">/</span> flow <span class="op">/</span> regime <span class="op">/</span> <span class="ss">f'OpenPIV_results_</span><span class="sc">{</span>windowsizes[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">_batch'</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    fracs <span class="op">=</span> []</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> <span class="bu">sorted</span>(folder.glob(<span class="st">'field_A*.txt'</span>)):</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> np.loadtxt(f, skiprows<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        flags <span class="op">=</span> data[:, <span class="dv">4</span>]</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        fracs.append(np.mean(flags <span class="op">!=</span> <span class="dv">0</span>))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.mean(fracs)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'flow'</span><span class="sc">:10s}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'regime'</span><span class="sc">:6s}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'mean invalid-vector fraction'</span><span class="sc">:&gt;28s}</span><span class="ss">"</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> flow <span class="kw">in</span> FLOWS:</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> regime <span class="kw">in</span> REGIMES:</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        frac <span class="op">=</span> batch_invalid_fraction(flow, regime)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>flow<span class="sc">:10s}</span><span class="ss"> </span><span class="sc">{</span>regime<span class="sc">:6s}</span><span class="ss"> </span><span class="sc">{</span>frac<span class="op">*</span><span class="dv">100</span><span class="sc">:27.1f}</span><span class="ss"> %"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>flow       regime mean invalid-vector fraction
+free       low                            0.8 %
+free       mid                            1.3 %
+free       high                           1.3 %
+cylinder   low                            1.1 %
+cylinder   mid                            1.7 %
+cylinder   high                           2.6 %
+step       low                            4.2 %
+step       mid                            5.6 %
+step       high                           9.4 %</code></pre>
+</div>
+</div>
+<div id="convergence-code" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-15T12:59:05.609031Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-15T12:59:05.608943Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-15T12:59:05.879639Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-15T12:59:05.879315Z&quot;}}" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convergence_curve(flow, regime):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Running mean of the field-averaged streamwise velocity vs. number of</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">    realizations included, in processing order."""</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> warnings</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    windowsizes, _ <span class="op">=</span> windows_for(flow)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    folder <span class="op">=</span> RESULTS_ROOT <span class="op">/</span> flow <span class="op">/</span> regime <span class="op">/</span> <span class="ss">f'OpenPIV_results_</span><span class="sc">{</span>windowsizes[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">_batch'</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> <span class="bu">sorted</span>(folder.glob(<span class="st">'field_A*.txt'</span>))</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    Us, running_means <span class="op">=</span> [], []</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> files:</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> np.loadtxt(f, skiprows<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        u, mask_ <span class="op">=</span> data[:, <span class="dv">2</span>], data[:, <span class="dv">5</span>]</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        u <span class="op">=</span> np.where(mask_ <span class="op">&gt;</span> <span class="dv">0</span>, np.nan, u)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        Us.append(u)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> warnings.catch_warnings():</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>            warnings.simplefilter(<span class="st">'ignore'</span>, category<span class="op">=</span><span class="pp">RuntimeWarning</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>            running_means.append(np.nanmean(np.stack(Us)))</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(files) <span class="op">+</span> <span class="dv">1</span>), np.array(running_means)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="bu">len</span>(FLOWS), figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">4</span>), sharex<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, flow <span class="kw">in</span> <span class="bu">zip</span>(axs, FLOWS):</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> regime <span class="kw">in</span> REGIMES:</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>        n, running_mean <span class="op">=</span> convergence_curve(flow, regime)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>        ax.plot(n, running_mean, label<span class="op">=</span>regime)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'number of realizations included'</span>)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'running mean of u (mm/s)'</span>)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    ax.set_title(flow)</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    ax.legend(fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>CONVERGENCE_THRESHOLD <span class="op">=</span> <span class="fl">0.02</span>  <span class="co"># flag if the mean is still moving by more than 2%</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># of its own value over the last 10% of realizations</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'flow'</span><span class="sc">:10s}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'regime'</span><span class="sc">:6s}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'N'</span><span class="sc">:&gt;4s}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'last-10</span><span class="sc">% r</span><span class="st">elative change'</span><span class="sc">:&gt;26s}</span><span class="ss">"</span>)</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> flow <span class="kw">in</span> FLOWS:</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> regime <span class="kw">in</span> REGIMES:</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>        n, running_mean <span class="op">=</span> convergence_curve(flow, regime)</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(n) <span class="op">&gt;=</span> <span class="dv">10</span>:</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>            tail <span class="op">=</span> <span class="bu">max</span>(<span class="dv">1</span>, <span class="bu">len</span>(n) <span class="op">//</span> <span class="dv">10</span>)</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>            rel_change <span class="op">=</span> <span class="bu">abs</span>(running_mean[<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> running_mean[<span class="op">-</span><span class="dv">1</span> <span class="op">-</span> tail]) <span class="op">/</span> (<span class="bu">abs</span>(running_mean[<span class="op">-</span><span class="dv">1</span>]) <span class="op">+</span> <span class="fl">1e-9</span>)</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>            flag <span class="op">=</span> <span class="st">'  &lt;-- consider more realizations in session 2'</span> <span class="cf">if</span> rel_change <span class="op">&gt;</span> CONVERGENCE_THRESHOLD <span class="cf">else</span> <span class="st">''</span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>flow<span class="sc">:10s}</span><span class="ss"> </span><span class="sc">{</span>regime<span class="sc">:6s}</span><span class="ss"> </span><span class="sc">{</span><span class="bu">len</span>(n)<span class="sc">:4d}</span><span class="ss"> </span><span class="sc">{</span>rel_change<span class="op">*</span><span class="dv">100</span><span class="sc">:25.2f}</span><span class="ss">%</span><span class="sc">{</span>flag<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>flow<span class="sc">:10s}</span><span class="ss"> </span><span class="sc">{</span>regime<span class="sc">:6s}</span><span class="ss"> </span><span class="sc">{</span><span class="bu">len</span>(n)<span class="sc">:4d}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'(need &gt;= 10 realizations to check)'</span><span class="sc">:&gt;26s}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5-practice-processing_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>flow       regime    N   last-10% relative change
+free       low      10                      0.01%
+free       mid      10                      0.00%
+free       high     10                      0.00%
+cylinder   low      10                      0.01%
+cylinder   mid      10                      0.02%
+cylinder   high     10                      0.01%
+step       low      10                      0.00%
+step       mid      10                      0.16%
+step       high     10                      0.14%</code></pre>
+</div>
+</div>
+</section>
+<section id="summary-next-step" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="summary-next-step"><span class="header-section-number">5.6</span> Summary &amp; next step</h2>
+<p>We now have, under <code>results/&lt;flow&gt;/&lt;regime&gt;/</code>: <code>OpenPIV_results_&lt;final window&gt;_batch/field_A0000..NNNN.txt</code> — one file per realization, ready for statistics (mean, fluctuations, turbulence intensity, …).</p>
+<p>If you decide in session 2 that a given flow/regime needs more realizations, re-acquire just that case, replace its frames under <code>data/real/&lt;flow&gt;/&lt;regime&gt;/</code>, and re-run from §1 onward.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
+            }
+          }
+          const config = {
+            allowHTML: true,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
+            appendTo: function(el) {
+              return el.parentElement.parentElement.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'quarto',
+            placement: 'right',
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
+          };
+          window.tippy(annoteTarget, config); 
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./4-practice.html" class="pagination-link" aria-label="Measurements">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurements</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./6-practice-analysis.html" class="pagination-link" aria-label="Analysis">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright © 2025-2026 J.-F. Krawczynski, ce travail est placé sous licence <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1">CC BY-SA 4.0</a>. Aucune donnée personnelle n’est collectée. Fait avec <a href="https://quarto.org/">Quarto</a> et <a href="https://jupyter.org/">JupyterLab</a>.</p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jfkrawczynski/um5mee12/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

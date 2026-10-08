@@ -10,23 +10,25 @@ bibliography: references.bib
 book:
   title: "Insights of Particle Image Velocimetry"
   author: "JF Krawczynski"
-  date: "10/3/2025"
+  date: "9/23/2026"
   language: en
   chapters:
     - index.qmd
     - part: "Theory"
       chapters:
-        - piv_basics.ipynb
-        - tutorial.ipynb
-        - advanced.ipynb
+        - 1-piv_basics.ipynb
+        - 2-openpiv_tutorial.ipynb
+        - 3-advanced.ipynb
     - part: "Practice"
       chapters:
-        - practice.ipynb
+        - 4-practice.ipynb
+        - 5-practice-processing.ipynb
+        - 6-practice-analysis.ipynb
   references: references.qmd
     
   downloads: pdf
   page-footer: |
-    Copyright © 2024-2025 J.-F. Krawczynski, ce travail est placé sous licence [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1). Aucune donnée personnelle n'est collectée. Fait avec [Quarto](https://quarto.org/) et [JupyterLab](https://jupyter.org/).
+    Copyright © 2025-2026 J.-F. Krawczynski, ce travail est placé sous licence [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1). Aucune donnée personnelle n'est collectée. Fait avec [Quarto](https://quarto.org/) et [JupyterLab](https://jupyter.org/).
   repo-url: https://github.com/jfkrawczynski/um5mee12
   repo-actions: [issue]
   image: figs/balls_water.webp
